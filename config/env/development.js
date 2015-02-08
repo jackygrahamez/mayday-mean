@@ -2,7 +2,7 @@
 
 module.exports = {
 	db: {
-		uri: 'mongodb://localhost/mean-dev',
+		uri: 'mongodb://admin:!QAZxsw2@ds031551.mongolab.com:31551/mean-test',
 		options: {
 			user: '',
 			pass: ''
