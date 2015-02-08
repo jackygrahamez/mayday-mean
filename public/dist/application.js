@@ -173,6 +173,22 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
 		// Home state routing
 		$stateProvider.
+		state('contact', {
+			url: '/contact',
+			templateUrl: 'modules/core/views/contact.client.view.html'
+		}).
+		state('technology', {
+			url: '/technology',
+			templateUrl: 'modules/core/views/technology.client.view.html'
+		}).
+		state('about', {
+			url: '/about',
+			templateUrl: 'modules/core/views/about.client.view.html'
+		}).
+		state('privacy', {
+			url: '/privacy',
+			templateUrl: 'modules/core/views/privacy.client.view.html'
+		}).
 		state('home', {
 			url: '/',
 			templateUrl: 'modules/core/views/home.client.view.html'
@@ -181,11 +197,40 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 ]);
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', 'Authentication', 'Menus',
-	function($scope, Authentication, Menus) {
+angular.module('core').controller('AboutController', ['$scope',
+	function($scope) {
+		// Controller Logic
+		// ...
+	}
+]);
+'use strict';
+
+angular.module('core').controller('ContactController', ['$scope',
+	function($scope) {
+		// Controller Logic
+		// ...
+	}
+]);
+'use strict';
+
+angular.module('core').controller('HeaderController',
+['$scope', 'Authentication', 'Menus', '$location',
+	function($scope, Authentication, Menus, $location) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
+		$scope.navigation =  [
+    { page: 'Home', path: '' },
+    { page: 'About', path: 'about' },
+    { page: 'Technology', path: 'technology' },
+    { page: 'Privacy', path: 'privacy' },
+    { page: 'Contact', path: 'contact' }];
+		$scope.navClass = function (page) {
+				page = page.toLowerCase();
+				var currentRoute = $location.path().substring(1) || 'home';
+				currentRoute = currentRoute.toLowerCase();
+				return page === currentRoute ? 'active' : '';
+		};
 
 		$scope.toggleCollapsibleMenu = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;
@@ -197,6 +242,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		});
 	}
 ]);
+
 'use strict';
 
 
@@ -204,6 +250,22 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+	}
+]);
+'use strict';
+
+angular.module('core').controller('PrivacyController', ['$scope',
+	function($scope) {
+		// Controller Logic
+		// ...
+	}
+]);
+'use strict';
+
+angular.module('core').controller('TechnologyController', ['$scope',
+	function($scope) {
+		// Controller Logic
+		// ...
 	}
 ]);
 'use strict';
