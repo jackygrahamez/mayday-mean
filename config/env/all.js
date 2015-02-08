@@ -2,7 +2,7 @@
 
 module.exports = {
 	app: {
-		title: 'MEAN.JS',
+		title: 'MayDay',
 		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
 		keywords: 'mongodb, express, angularjs, node.js, mongoose, passport'
 	},
@@ -14,7 +14,7 @@ module.exports = {
 	// The name of the MongoDB collection to store sessions in
 	sessionCollection: 'sessions',
 	// The session cookie settings
-	sessionCookie: { 
+	sessionCookie: {
 		path: '/',
 		httpOnly: true,
 		// If secure is set to true then it will cause the cookie to be set
@@ -25,7 +25,7 @@ module.exports = {
 		// Only set the maxAge to null if the cookie shouldn't be expired
 		// at all. The cookie will expunge when the browser is closed.
 		maxAge: null,
-		// To set the cookie in a specific domain uncomment the following 
+		// To set the cookie in a specific domain uncomment the following
 		// setting:
 		// domain: 'yourdomain.com'
 	},
@@ -52,7 +52,9 @@ module.exports = {
 				'public/lib/angular-animate/angular-animate.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/ng-parallax/angular-parallax.js',
+				'public/lib/angular-scroll/angular-scroll.js'
 			]
 		},
 		css: [

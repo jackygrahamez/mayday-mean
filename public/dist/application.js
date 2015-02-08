@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mean';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'duParallax', 'duScroll'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -21,17 +21,22 @@ var ApplicationConfiguration = (function() {
 		registerModule: registerModule
 	};
 })();
+
 'use strict';
 
 //Start by defining the main module and adding the module dependencies
 angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
+//console.dir(ApplicationConfiguration.applicationModuleVendorDependencies);
 
 // Setting HTML5 Location Mode
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',
 	function($locationProvider) {
 		$locationProvider.hashPrefix('!');
 	}
-]);
+]).run(["$rootScope", "$location", "parallaxHelper", function($rootScope, $location, parallaxHelper) {
+	$rootScope.background = parallaxHelper.createAnimator(-0.3);
+}]);
+//$scope.background = parallaxHelper.createAnimator(-0.3);
 
 //Then define the init function for starting up the application
 angular.element(document).ready(function() {
@@ -41,6 +46,7 @@ angular.element(document).ready(function() {
 	//Then init the app
 	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
+
 'use strict';
 
 // Use Application configuration module to register a new module
@@ -197,12 +203,26 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 ]);
 'use strict';
 
-angular.module('core').controller('AboutController', ['$scope',
-	function($scope) {
-		// Controller Logic
-		// ...
+angular.module('core').controller('AboutController', ['$scope', 'parallaxHelper',
+	function($scope, parallaxHelper) {
+		$scope.grow = function(a) {
+				return a.elemY < 300 && a.elemY > 50 ? {
+						msTransform: "scale(1.2)",
+						webkitTransform: "scale(1.2)",
+						MozTransform: "scale(1.2)",
+						OTransform: "scale(1.2)",
+						transform: "scale(1.2)"
+				} : {
+						msTransform: "scale(1)",
+						webkitTransform: "scale(1)",
+						MozTransform: "scale(1)",
+						OTransform: "scale(1)",
+						transform: "scale(1)"
+				}
+		};
 	}
 ]);
+
 'use strict';
 
 angular.module('core').controller('ContactController', ['$scope',
@@ -246,12 +266,29 @@ angular.module('core').controller('HeaderController',
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-	function($scope, Authentication) {
+angular.module('core').controller('HomeController', ['$scope', 'Authentication', 'parallaxHelper',
+	function($scope, Authentication, parallaxHelper) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+		
+		$scope.grow = function(a) {
+				return a.elemY < 300 && a.elemY > 50 ? {
+						msTransform: "scale(1.2)",
+						webkitTransform: "scale(1.2)",
+						MozTransform: "scale(1.2)",
+						OTransform: "scale(1.2)",
+						transform: "scale(1.2)"
+				} : {
+						msTransform: "scale(1)",
+						webkitTransform: "scale(1)",
+						MozTransform: "scale(1)",
+						OTransform: "scale(1)",
+						transform: "scale(1)"
+				}
+		}
 	}
 ]);
+
 'use strict';
 
 angular.module('core').controller('PrivacyController', ['$scope',
