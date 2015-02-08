@@ -7153,7 +7153,7 @@ body {
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	background-color: #212121;
-	background-image: url(../img/mayday_morse_o30.png),url(../img/mayday_morse_o40.png),url(../img/mayday_morse_o50.png),url(../img/mayday_morse_o60.png),url(../img/mayday_morse_o30_flip.png),url(../img/mayday_morse_o40_flip.png),url(../img/mayday_morse_o50_flip.png),url(../img/mayday_morse_o60_flip.png);
+	background-image: url(/modules/core/img/mayday_morse_o30.png),url(/modules/core/img/mayday_morse_o40.png),url(/modules/core/img/mayday_morse_o50.png),url(/modules/core/img/mayday_morse_o60.png),url(/modules/core/img/mayday_morse_o30_flip.png),url(/modules/core/img/mayday_morse_o40_flip.png),url(/modules/core/img/mayday_morse_o50_flip.png),url(/modules/core/img/mayday_morse_o60_flip.png);
 	background-repeat: repeat;
 }
 
