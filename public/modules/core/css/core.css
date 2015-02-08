@@ -207,10 +207,6 @@ optgroup {
 	}
 }
 
-@font-face {
-	font-family:'Glyphicons Halflings';src:url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot);src:url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix) format("embedded-opentype"),url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff2) format("woff2"),url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.woff) format("woff"),url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.ttf) format("truetype"),url(../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format("svg");
-}
-
 .glyphicon {
 	position: relative;
 	top: 1px;
@@ -6778,7 +6774,7 @@ button.close {
 }
 
 @font-face {
-	font-family:momstypewriterregular;src:url(fonts/moms_typewriter-webfont.eot?#iefix) format(embedded-opentype),url(fonts/moms_typewriter-webfont.woff2) format(woff2),url(fonts/moms_typewriter-webfont.woff) format(woff),url(fonts/moms_typewriter-webfont.ttf) format(truetype),url(fonts/moms_typewriter-webfont.svg#momstypewriterregular) format(svg);font-weight:400;font-style:normal;
+	font-family:momstypewriterregular;src:url(/modules/core/css/fonts/moms_typewriter-webfont.eot?#iefix) format(embedded-opentype),url(/modules/core/css/fonts/moms_typewriter-webfont.woff2) format(woff2),url(/modules/core/css/fonts/moms_typewriter-webfont.woff) format(woff),url(/modules/core/css/fonts/moms_typewriter-webfont.ttf) format(truetype),url(/modules/core/css/fonts/moms_typewriter-webfont.svg#momstypewriterregular) format(svg);font-weight:400;font-style:normal;
 }
 
 .browsehappy {
