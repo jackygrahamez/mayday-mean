@@ -4187,7 +4187,7 @@ tbody.collapse.in {
 }
 
 .navbar-collapse.in {
-	overflow: visible !important;
+	overflow-y: visible !important;
 }
 
 @media (min-width:768px) {
@@ -4206,7 +4206,7 @@ tbody.collapse.in {
 	}
 
 	.navbar-collapse.in {
-		overflow-y: visible;
+		overflow-y: visible !important;
 	}
 
 	.navbar-fixed-bottom .navbar-collapse,.navbar-fixed-top .navbar-collapse,.navbar-static-top .navbar-collapse {
