@@ -7,7 +7,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.authentication = Authentication;
 
 		$scope.grow = function(a) {
-				return a.elemY < 300 && a.elemY > 50 && screen.width > 767 ? {
+				return a.elemY < 300 && a.elemY > 50 ? {
 						msTransform: 'scale(1.2)',
 						webkitTransform: 'scale(1.2)',
 						MozTransform: 'scale(1.2)',
