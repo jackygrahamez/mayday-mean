@@ -12,7 +12,9 @@ angular.module('core').controller('HeaderController',
     { page: 'About', path: 'about' },
     { page: 'Technology', path: 'technology' },
     { page: 'Privacy', path: 'privacy' },
-    { page: 'Contact', path: 'contact' },
+    { page: 'Contact', path: 'contact' }];
+
+		$scope.userNavigation =  [
 		{ page: 'Sign Up', path: 'signup' },
 		{ page: 'Sign In', path: 'signin' }];
 

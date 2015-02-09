@@ -8,9 +8,13 @@
 		</button>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-		{{navigation}}
 		<ul ng-repeat="nav in navigation" class="nav nav-pills pull-left">
-			<li ng-class="navClass('{{nav.page}}')">
+			<li ui-route="/{{nav.path}}" ng-class="{active: $uiRoute}">
+				<a ng-href="/#!/{{nav.path}}">{{nav.page}}</a>
+			</li>
+		</ul>
+		<ul ng-repeat="nav in userNavigation" class="nav nav-pills pull-right">
+			<li ui-route="/{{nav.path}}" ng-class="{active: $uiRoute}">
 				<a ng-href="/#!/{{nav.path}}">{{nav.page}}</a>
 			</li>
 		</ul>
