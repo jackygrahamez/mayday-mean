@@ -6,7 +6,9 @@
 body > header {
 	background: transparent;
 }
-
+body > header > .container {
+	padding-bottom: 10px;
+}
 .content {
 	margin-top: 50px;
 }
