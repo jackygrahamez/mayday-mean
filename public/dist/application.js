@@ -36,6 +36,8 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 ]).run(["$rootScope", "$location", "parallaxHelper", function($rootScope, $location, parallaxHelper) {
 	$rootScope.background = parallaxHelper.createAnimator(-0.3);
 	$rootScope.transitionBackground = function(elementPosition) {
+
+		if (screen.width > 767) {
 		var left = elementPosition.elemY * -0.6,
 		right = left * -1,
 		positions = left + 'px '+left+'px, ' +
@@ -46,6 +48,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 		'0px '+parseInt(right + 3)+'px, '+
 		'0px '+parseInt(right + 2)+'px, '+
 		'0px '+parseInt(right + 4)+'px';
+		}
 		//console.log('positions '+positions);
 		return {
 			backgroundPosition: positions
@@ -222,7 +225,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 angular.module('core').controller('AboutController', ['$scope', 'parallaxHelper',
 	function($scope, parallaxHelper) {
 		$scope.grow = function(a) {
-				return a.elemY < 300 && a.elemY > 50 ? {
+				return a.elemY < 300 && a.elemY > 50 && screen.width > 767 ? {
 						msTransform: 'scale(1.2)',
 						webkitTransform: 'scale(1.2)',
 						MozTransform: 'scale(1.2)',
@@ -294,7 +297,7 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.authentication = Authentication;
 
 		$scope.grow = function(a) {
-				return a.elemY < 300 && a.elemY > 50 ? {
+				return a.elemY < 300 && a.elemY > 50 && screen.width > 767 ? {
 						msTransform: 'scale(1.2)',
 						webkitTransform: 'scale(1.2)',
 						MozTransform: 'scale(1.2)',
