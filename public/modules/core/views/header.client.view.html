@@ -8,7 +8,7 @@
 		</button>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-
+		{{navigation}}
 		<ul ng-repeat="nav in navigation" class="nav nav-pills pull-left">
 			<li ng-class="navClass('{{nav.page}}')">
 				<a ng-href="/#!/{{nav.path}}">{{nav.page}}</a>
@@ -29,6 +29,7 @@
 				<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
 			</li>
 		</ul>-->
+		<!--
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
 			<li ui-route="/signup" ng-class="{active: $uiRoute}">
 				<a href="/#!/signup">Sign Up</a>
@@ -38,7 +39,8 @@
 				<a href="/#!/signin">Sign In</a>
 			</li>
 		</ul>
-		<!--<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+
+		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
 			<li class="dropdown" dropdown>
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" dropdown-toggle>
 					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
