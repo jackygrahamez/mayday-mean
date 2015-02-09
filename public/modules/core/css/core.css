@@ -4186,6 +4186,11 @@ tbody.collapse.in {
 	clear: both;
 }
 
+header .container .navbar-collapse.in {
+	overflow-y: visible !important;
+}
+
+
 .navbar-collapse.in {
 	overflow-y: auto;
 }
