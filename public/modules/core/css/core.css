@@ -3480,6 +3480,7 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
 .collapse.in {
 	display: block;
 	visibility: visible;
+	overflow: visible;
 }
 
 tr.collapse.in {
