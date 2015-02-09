@@ -4,8 +4,8 @@ module.exports = {
 	db: {
 		uri: 'mongodb://admin:!QAZxsw2@ds031551.mongolab.com:31551/mean-test',
 		options: {
-			user: '',
-			pass: ''
+			user: 'admin',
+			pass: '!QAZxsw2'
 		}
 	},
 	log: {

@@ -5,8 +5,8 @@ module.exports = {
 		//uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
 		uri: 'mongodb://admin:!QAZxsw2@ds031551.mongolab.com:31551/mean-test',
 		options: {
-			user: '',
-			pass: ''
+			user: 'admin',
+			pass: '!QAZxsw2'
 		}
 	},
 	log: {
