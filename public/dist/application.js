@@ -198,6 +198,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
 		// Home state routing
 		$stateProvider.
+		state('messaging', {
+			url: '/messaging',
+			templateUrl: 'modules/core/views/messaging.client.view.html'
+		}).
 		state('contact', {
 			url: '/contact',
 			templateUrl: 'modules/core/views/contact.client.view.html'
@@ -314,6 +318,14 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	}
 ]);
 
+'use strict';
+
+angular.module('core').controller('MessagingController', ['$scope',
+	function($scope) {
+		// Controller Logic
+		// ...
+	}
+]);
 'use strict';
 
 angular.module('core').controller('PrivacyController', ['$scope',
