@@ -42,7 +42,7 @@ module.exports = {
 		//clientID: process.env.FACEBOOK_ID || 'APP_ID',
 		clientID: '1538753983060354',
 		//clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
-		clientSecret: '54bc1d0e34377c27b4baede4ab346102',
+		clientSecret: '88aebdb311df7e2baba6a4b8f1c05def',
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {
