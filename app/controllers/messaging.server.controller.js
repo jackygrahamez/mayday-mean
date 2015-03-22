@@ -13,27 +13,27 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
   console.log('messaging create');
+  console.dir(req.body);
   var messaging = new Message(req.body),
     status = '';
   messaging.message = req.message;
-  if (true) {
-    if (false) {
-      status = { sent : 'false', error : 'too many text messages sent' };
-      res.json(status);
-    } else {
-      messaging.save(function(err) {
-    		if (err) {
-    			return res.status(400).send({
-    				message: errorHandler.getErrorMessage(err)
-    			});
-    		} else {
-    			//res.json(messaging);
-          status = { sent : 'true'};
-          res.json(status);
-          console.log(status);
-    		}
-    	});
-    }
+  
+  if (false) {
+    status = { sent : 'false', error : 'too many text messages sent' };
+    res.json(status);
+  } else {
+    messaging.save(function(err) {
+  		if (err) {
+  			return res.status(400).send({
+  				message: errorHandler.getErrorMessage(err)
+  			});
+  		} else {
+  			//res.json(messaging);
+        status = { sent : 'true'};
+        res.json(status);
+        console.log(status);
+  		}
+  	});
   }
 };
 

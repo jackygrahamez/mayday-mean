@@ -21,6 +21,14 @@ var MessagingSchema = new Schema({
 		type: String,
 		trim: true
 	},
+	message: {
+		type: String,
+		trim: true
+	},
+	loc: {
+    type: [Number],  // [<longitude>, <latitude>]
+    index: '2d'      // create the geospatial index
+	},
 	requestTime: {
 		type: Date,
 		default: Date.now
