@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
+    nexmo = require('./lib/nexmo'),
     Message = mongoose.model('Message'),
     _ = require('lodash');
 
@@ -15,7 +16,18 @@ exports.create = function(req, res) {
   console.log('messaging create');
   console.dir(req.body);
   var messaging = new Message(req.body),
-    status = '';
+    sender = '12134657644',
+    message = '',
+    recipient = '',
+    status = '',
+    opts = null,
+    callback = function consolelog (err,messageResponse) {
+       if (err) {
+            console.log(err);
+       } else {
+            console.dir(messageResponse);
+       }
+    };
   console.log(req.body.idfv);
   Message.count({ idfv: req.body.idfv }, function(err, count) {
     if (err) {
@@ -40,10 +52,23 @@ exports.create = function(req, res) {
             });*/
           } else {
             //res.json(messaging);
+            nexmo.initialize('c3c7616d','e9534e8b','http',true);
             status = { sent : 'true'};
             res.json(status);
             console.log(status);
-            
+            for (var i = 0; i < req.body.contacts.length; i++) {
+              message = req.body.message + ' ';
+              recipient = req.body.contacts[i];
+              console.log(message);
+              console.log(recipient);
+              if (message.length > 0 && recipient.length > 0) {
+                //helper.sendMessage(message, tel);
+                nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+              }
+              message = '';
+              recipient = '';
+            }
+            //helper.sendMessage(message, tel);
           }
         });
       }
