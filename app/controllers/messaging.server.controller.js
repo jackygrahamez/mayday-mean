@@ -16,25 +16,41 @@ exports.create = function(req, res) {
   console.dir(req.body);
   var messaging = new Message(req.body),
     status = '';
-  messaging.message = req.message;
-  
-  if (false) {
-    status = { sent : 'false', error : 'too many text messages sent' };
-    res.json(status);
-  } else {
-    messaging.save(function(err) {
-  		if (err) {
-  			return res.status(400).send({
-  				message: errorHandler.getErrorMessage(err)
-  			});
-  		} else {
-  			//res.json(messaging);
-        status = { sent : 'true'};
+  console.log(req.body.idfv);
+  Message.count({ idfv: req.body.idfv }, function(err, count) {
+    if (err) {
+      status = { sent : 'false', error : err };
+      res.json(status);
+      console.log(status);
+    } else {
+      console.log('Count is ' + count);
+      if (count > 10) {
+        status = { sent : 'false', error : 'too many text messages sent' };
         res.json(status);
         console.log(status);
-  		}
-  	});
-  }
+      } else {
+        messaging.save(function(err) {
+          if (err) {
+            status = { sent : 'false', error : err };
+            res.json(status);
+            console.log(status);
+            /*
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(err)
+            });*/
+          } else {
+            //res.json(messaging);
+            status = { sent : 'true'};
+            res.json(status);
+            console.log(status);
+            
+          }
+        });
+      }
+    }
+
+  });
+
 };
 
 /**
@@ -62,5 +78,9 @@ exports.delete = function(req, res) {
  * List of Messagings
  */
 exports.list = function(req, res) {
+
+};
+
+exports.validateMessage = function(req, res) {
 
 };

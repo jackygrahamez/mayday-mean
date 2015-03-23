@@ -15,10 +15,13 @@ var MessagingSchema = new Schema({
 	adId: {
 		type: String,
 		trim: true,
-		default: ''
 	},
 	idfv: {
 		type: String,
+		trim: true,
+	},
+	contacts: {
+		type: [String],
 		trim: true
 	},
 	message: {
