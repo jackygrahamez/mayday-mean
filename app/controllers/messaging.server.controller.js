@@ -59,6 +59,9 @@ exports.create = function(req, res) {
             for (var i = 0; i < req.body.contacts.length; i++) {
               message = req.body.message + ' ';
               recipient = req.body.contacts[i];
+              if (recipient.substring(0, 1) != "1") {
+                recipient = "1"+recipient;
+              }
               console.log(message);
               console.log(recipient);
               if (message.length > 0 && recipient.length > 0) {
