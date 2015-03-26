@@ -15,11 +15,22 @@ var MessagingSchema = new Schema({
 	adId: {
 		type: String,
 		trim: true,
-		default: ''
 	},
 	idfv: {
 		type: String,
+		trim: true,
+	},
+	contacts: {
+		type: [String],
 		trim: true
+	},
+	message: {
+		type: String,
+		trim: true
+	},
+	loc: {
+    type: [Number],  // [<longitude>, <latitude>]
+    index: '2d'      // create the geospatial index
 	},
 	requestTime: {
 		type: Date,
