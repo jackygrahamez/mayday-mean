@@ -4186,13 +4186,8 @@ tbody.collapse.in {
 	clear: both;
 }
 
-header .container .navbar-collapse.in {
-	overflow-y: visible !important;
-}
-
-
 .navbar-collapse.in {
-	overflow-y: visible;
+	overflow-y: auto;
 }
 
 @media (min-width:768px) {
@@ -5015,7 +5010,13 @@ a.badge:focus,a.badge:hover {
 	color: inherit;
 	background-color: #eee;
 }
-
+.jumbotron .grow {
+	-moz-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
+	-ms-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
+	-o-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
+	-webkit-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
+	filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
+}
 
 .jumbotron .h1,.jumbotron h1 {
 	color: inherit;
@@ -5042,14 +5043,6 @@ a.badge:focus,a.badge:hover {
 @media screen and (min-width:768px) {
 	.jumbotron {
 		padding: 48px 0;
-	}
-
-	.jumbotron .grow {
-		-moz-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
-		-ms-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
-		-o-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
-		-webkit-filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
-		filter: drop-shadow(rgb(0, 0, 0) 0px 50px 71px);
 	}
 
 	.container .jumbotron,.container-fluid .jumbotron {
@@ -6817,7 +6810,7 @@ button.close {
 }
 
 .footer {
-	padding-top: 100px;
+	padding-top: 30px;
 	color: #777;
 	border-top: 1px solid #e5e5e5;
 }

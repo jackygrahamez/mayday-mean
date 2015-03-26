@@ -36,8 +36,6 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 ]).run(["$rootScope", "$location", "parallaxHelper", function($rootScope, $location, parallaxHelper) {
 	$rootScope.background = parallaxHelper.createAnimator(-0.3);
 	$rootScope.transitionBackground = function(elementPosition) {
-
-		if (screen.width > 767) {
 		var left = elementPosition.elemY * -0.6,
 		right = left * -1,
 		positions = left + 'px '+left+'px, ' +
@@ -48,7 +46,6 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 		'0px '+parseInt(right + 3)+'px, '+
 		'0px '+parseInt(right + 2)+'px, '+
 		'0px '+parseInt(right + 4)+'px';
-		}
 		//console.log('positions '+positions);
 		return {
 			backgroundPosition: positions
@@ -198,10 +195,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
 		// Home state routing
 		$stateProvider.
-		state('messaging', {
-			url: '/messaging',
-			templateUrl: 'modules/core/views/messaging.client.view.html'
-		}).
 		state('contact', {
 			url: '/contact',
 			templateUrl: 'modules/core/views/contact.client.view.html'
@@ -318,14 +311,6 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	}
 ]);
 
-'use strict';
-
-angular.module('core').controller('MessagingController', ['$scope',
-	function($scope) {
-		// Controller Logic
-		// ...
-	}
-]);
 'use strict';
 
 angular.module('core').controller('PrivacyController', ['$scope',

@@ -3,7 +3,7 @@
 module.exports = {
 	db: {
 		//uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',
-		uri: 'mongodb://md_admin:Swbv123abc()@ds031551.mongolab.com:31551/mean-test',
+		uri: 'mongodb://admin:!QAZxsw2@ds031551.mongolab.com:31551/mean-test',
 		options: {
 			user: 'admin',
 			pass: '!QAZxsw2'
@@ -39,10 +39,8 @@ module.exports = {
 		js: 'public/dist/application.min.js'
 	},
 	facebook: {
-		//clientID: process.env.FACEBOOK_ID || 'APP_ID',
-		clientID: '1538753983060354',
-		//clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
-		clientSecret: '88aebdb311df7e2baba6a4b8f1c05def',
+		clientID: process.env.FACEBOOK_ID || 'APP_ID',
+		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {
