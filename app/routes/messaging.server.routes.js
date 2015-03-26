@@ -6,23 +6,8 @@ module.exports = function(app) {
 	// Routing logic
 	// ...
 	//app.route('/messaging')
-	app.post('/messaging', function(req, res) {
-		var status = '';
-		if (!(req.body.adId || req.body.idfv)) {
-			status = { sent : 'false', error : 'incomplete request' };
-			res.json(status);
-		} else if (!(req.body.adId.length === 11 && req.body.idfv.length === 36)) {
-			status = { sent : 'false', error : 'incomplete request' };
-			res.json(status);
-		} else if (req.body.password !== '123456') {
-			status = { sent : 'false', error : 'incorrect credentials' };
-			res.json(status);
-		} else if (!req.body.message) {
-			status = { sent : 'false', error : 'No message provided' };
-			res.json(status);
-		} else {
-			messaging.create(req, res);
-		}
+	app.post('/messaging', function(req, res){
+		messaging.create(req, res);
 	});
 
 	/*
