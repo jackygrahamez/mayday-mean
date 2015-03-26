@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
+    nexmo = require('./lib/nexmo'),
     Message = mongoose.model('Message'),
     _ = require('lodash');
 
@@ -13,19 +14,71 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
   console.log('messaging create');
-  var messaging = new Message(req.body);
-  messaging.message = req.message;
+  console.dir(req.body);
+  var messaging = new Message(req.body),
+    sender = '12134657644',
+    message = '',
+    recipient = '',
+    status = '',
+    opts = null,
+    callback = function consolelog (err,messageResponse) {
+       if (err) {
+            console.log(err);
+       } else {
+            console.dir(messageResponse);
+       }
+    };
+  console.log(req.body.idfv);
+  Message.count({ idfv: req.body.idfv }, function(err, count) {
+    if (err) {
+      status = { sent : 'false', error : err };
+      res.json(status);
+      console.log(status);
+    } else {
+      console.log('Count is ' + count);
+      if (count > 10) {
+        status = { sent : 'false', error : 'too many text messages sent' };
+        res.json(status);
+        console.log(status);
+      } else {
+        messaging.save(function(err) {
+          if (err) {
+            status = { sent : 'false', error : err };
+            res.json(status);
+            console.log(status);
+            /*
+            return res.status(400).send({
+              message: errorHandler.getErrorMessage(err)
+            });*/
+          } else {
+            //res.json(messaging);
+            nexmo.initialize('c3c7616d','e9534e8b','http',true);
+            status = { sent : 'true'};
+            res.json(status);
+            console.log(status);
+            for (var i = 0; i < req.body.contacts.length; i++) {
+              message = req.body.message + ' ';
+              recipient = req.body.contacts[i];
+              if (recipient.substring(0, 1) != "1") {
+                recipient = "1"+recipient;
+              }
+              console.log(message);
+              console.log(recipient);
+              if (message.length > 0 && recipient.length > 0) {
+                //helper.sendMessage(message, tel);
+                nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+              }
+              message = '';
+              recipient = '';
+            }
+            //helper.sendMessage(message, tel);
+          }
+        });
+      }
+    }
 
-  messaging.save(function(err) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.json(messaging);
-      console.log(messaging);
-		}
-	});
+  });
+
 };
 
 /**
@@ -53,5 +106,9 @@ exports.delete = function(req, res) {
  * List of Messagings
  */
 exports.list = function(req, res) {
+
+};
+
+exports.validateMessage = function(req, res) {
 
 };
