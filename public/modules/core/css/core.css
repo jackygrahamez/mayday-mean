@@ -65,6 +65,7 @@ mark {
 sub,sup {
 	line-height: 0;
 	position: relative;
+	font-size: 0.8em !important;
 }
 
 sup {
