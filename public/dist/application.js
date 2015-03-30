@@ -86,11 +86,12 @@ ApplicationConfiguration.registerModule('users');
 angular.module('articles').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Articles', 'articles', 'dropdown', '/articles(/create)?');
-		Menus.addSubMenuItem('topbar', 'articles', 'List Articles', 'articles');
-		Menus.addSubMenuItem('topbar', 'articles', 'New Article', 'articles/create');
+		Menus.addMenuItem('topbar', 'Blog Posts', 'articles', 'dropdown', '/articles(/create)?');
+		Menus.addSubMenuItem('topbar', 'articles', 'Blog Posts', 'articles');
+		Menus.addSubMenuItem('topbar', 'articles', 'New Post', 'articles/create');
 	}
 ]);
+
 'use strict';
 
 // Setting up route
@@ -354,7 +355,7 @@ angular.module('core').service('Menus', [
 		// Define the menus object
 		this.menus = {};
 
-		// A private function for rendering decision 
+		// A private function for rendering decision
 		var shouldRender = function(user) {
 			if (user) {
 				if (!!~this.roles.indexOf('*')) {
@@ -508,6 +509,7 @@ angular.module('core').service('Menus', [
 		this.addMenu('topbar');
 	}
 ]);
+
 'use strict';
 
 // Config HTTP Error Handling
