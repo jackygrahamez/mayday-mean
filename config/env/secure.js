@@ -3,7 +3,8 @@
 module.exports = {
 	port: 8443,
 	db: {
-		uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/mean',
+		//uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/mean',
+		uri: 'mongodb://md_admin:Swbv123abc()@ds031551.mongolab.com:31551/mean-test'
 		options: {
 			user: '',
 			pass: ''
