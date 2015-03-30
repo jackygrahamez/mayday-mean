@@ -6829,6 +6829,8 @@ button.close {
 
 .grow {
 	transition: all .2s ease-in-out;
+}
+.shadow {
 	-moz-filter: drop-shadow(rgb(0, 0, 0) 1px 5px 10px);
 	-ms-filter: drop-shadow(rgb(0, 0, 0) 1px 5px 10px);
 	-o-filter: drop-shadow(rgb(0, 0, 0) 1px 5px 10px);
