@@ -35,6 +35,9 @@ var MessagingSchema = new Schema({
 	requestTime: {
 		type: Date,
 		default: Date.now
+	},
+	messageResponse: {
+		type: Object
 	}
 });
 
