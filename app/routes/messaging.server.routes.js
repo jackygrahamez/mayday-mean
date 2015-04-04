@@ -7,7 +7,19 @@ module.exports = function(app) {
 	// ...
 	//app.route('/messaging')
 	app.post('/messaging', function(req, res){
-		messaging.create(req, res);
+		var status = '';
+		if (typeof(req.body.debug) !== 'undefined') {
+			if (req.body.debug) {
+				status = { sent : 'true', debug : 'true'};
+				res.json(status);
+				console.log(status);
+			} else {
+				messaging.create(req, res);
+			}
+		} else {
+			messaging.create(req, res);
+		}
+
 	});
 
 	/*

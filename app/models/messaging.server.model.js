@@ -41,6 +41,10 @@ var MessagingSchema = new Schema({
 	},
 	err: {
 		type: Schema.Types.Mixed
+	},
+	debug: {
+		type: Boolean,
+		default: false
 	}
 });
 
