@@ -37,7 +37,10 @@ var MessagingSchema = new Schema({
 		default: Date.now
 	},
 	messageResponse: {
-		type: Object
+		type: Schema.Types.Mixed
+	},
+	err: {
+		type: Schema.Types.Mixed
 	}
 });
 
