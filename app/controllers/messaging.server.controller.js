@@ -7,7 +7,13 @@ var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
     nexmo = require('./lib/nexmo'),
     Message = mongoose.model('Message'),
+    TelCarrier = require('tel-carrier'),
+    telCarrier,
     _ = require('lodash');
+
+    telCarrier = TelCarrier.create({
+      service: 'freecarrierlookup.com'
+    });
 
 /**
  * Create a Messaging
@@ -62,6 +68,10 @@ exports.create = function(req, res) {
               console.log(recipient);
               if (message.length > 0 && recipient.length > 1 && idfv.length >= 36) {
                 //helper.sendMessage(message, tel);
+
+                telCarrier.lookup('2024941707', function (err, info) {
+                  console.log(info);
+                });
 
                 nexmo.sendTextMessage(sender,recipient,message,opts,
                   function (err,messageResponse) {
