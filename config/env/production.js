@@ -46,23 +46,31 @@ module.exports = {
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {
-		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		//clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
+		clientID: 'Q6jmr4uvLbDEAgG9zAyxu20yF',
+		//clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		clientSecret: 'RFLlKNdqbOu0a8IhUxC8Obn5xBV0iPWeLTkwSrcnQfcHgVjB92',
 		callbackURL: '/auth/twitter/callback'
 	},
 	google: {
-		clientID: process.env.GOOGLE_ID || 'APP_ID',
-		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
+		//clientID: process.env.GOOGLE_ID || 'APP_ID',
+		clientID: '475852206826-1atqqohgpbrt9svvsf70uqeu9q14hdch.apps.googleusercontent.com',
+		//clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
+		clientSecret: 'yJ1PddSyVe5wkkVkJUDN7ahi',
 		callbackURL: '/auth/google/callback'
 	},
 	linkedin: {
-		clientID: process.env.LINKEDIN_ID || 'APP_ID',
-		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+		//clientID: process.env.LINKEDIN_ID || 'APP_ID',
+		clientID: '78yo23ei5bt0pg',
+		//clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+		clientSecret: 'TfmzfaCtmozvTl1W',
 		callbackURL: '/auth/linkedin/callback'
 	},
 	github: {
-		clientID: process.env.GITHUB_ID || 'APP_ID',
-		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
+		//clientID: process.env.GITHUB_ID || 'APP_ID',
+		clientID: '5818694066c48541221b',
+		//clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
+		clientSecret: 'd1fbaca577f0315f7ed04331bbd7ffd2defaac01'
 		callbackURL: '/auth/github/callback'
 	},
 	mailer: {
