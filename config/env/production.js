@@ -53,17 +53,17 @@ module.exports = {
 		callbackURL: '/auth/twitter/callback'
 	},
 	google: {
-		clientID: process.env.GOOGLE_ID || 'APP_ID',
-		//clientID: '475852206826-1atqqohgpbrt9svvsf70uqeu9q14hdch.apps.googleusercontent.com',
-		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
-		//clientSecret: 'yJ1PddSyVe5wkkVkJUDN7ahi',
+		//clientID: process.env.GOOGLE_ID || 'APP_ID',
+		clientID: '475852206826-1atqqohgpbrt9svvsf70uqeu9q14hdch.apps.googleusercontent.com',
+		//clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
+		clientSecret: 'yJ1PddSyVe5wkkVkJUDN7ahi',
 		callbackURL: '/auth/google/callback'
 	},
 	linkedin: {
-		clientID: process.env.LINKEDIN_ID || 'APP_ID',
-		//clientID: '78yo23ei5bt0pg',
-		clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
-		//clientSecret: 'TfmzfaCtmozvTl1W',
+		//clientID: process.env.LINKEDIN_ID || 'APP_ID',
+		clientID: '78yo23ei5bt0pg',
+		//clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
+		clientSecret: 'TfmzfaCtmozvTl1W',
 		callbackURL: '/auth/linkedin/callback'
 	},
 	github: {
