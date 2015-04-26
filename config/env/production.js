@@ -67,10 +67,10 @@ module.exports = {
 		callbackURL: '/auth/linkedin/callback'
 	},
 	github: {
-		//clientID: process.env.GITHUB_ID || 'APP_ID',
-		clientID: '5818694066c48541221b',
-		//clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
-		clientSecret: 'd1fbaca577f0315f7ed04331bbd7ffd2defaac01'
+		clientID: process.env.GITHUB_ID || 'APP_ID',
+		//clientID: '5818694066c48541221b',
+		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
+		//clientSecret: 'd1fbaca577f0315f7ed04331bbd7ffd2defaac01'
 		callbackURL: '/auth/github/callback'
 	},
 	mailer: {
