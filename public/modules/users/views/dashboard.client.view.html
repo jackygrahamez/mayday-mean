@@ -1,0 +1,49 @@
+<section data-ng-controller="DashboardController">
+	<h2>Setup Contacts</h2>
+	<p>Welcome <span class="text-capitalize">{{authentication.user.firstName}}</span>. Please enter your emergency contact list below.</p>
+	<ol>
+		<li ng-repeat="contact in contacts" ng-init="contact.edit=false">
+			<div ng-hide="contact.edit" class="contact_info">
+				<h4>Contact {{$index+1}}</h4>
+				<label ng-show="contact.firstName" name="firstName" data-ng-bind="contact.firstName"></label>
+				<label ng-show="{{contact.lastName}}" name="lastName" data-ng-bind="contact.lastName"></label>
+				<label ng-show="{{contact.email}}" name="email" data-ng-bind="contact.email"></label>
+				<label ng-show="{{contact.tel}}" name="tel" data-ng-bind="contact.tel"></label>
+				<button ng-click="contact.edit=!contact.edit" class="btn btn-large btn-primary">Edit</button>
+			</div>
+			<form ng-show="contact.edit" name="userForm" data-ng-submit="addContact($index)" class="signin form-horizontal" novalidate autocomplete="off">
+				<fieldset>
+					<div class="form-group">
+						<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="contact.firstName" placeholder="First Name">
+					</div>
+					<div class="form-group">
+						<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="contact.lastName" placeholder="Last Name">
+					</div>
+					<div class="form-group">
+						<input type="email" id="email" name="email" class="form-control" data-ng-model="contact.email" placeholder="Email">
+					</div>
+					<div class="form-group">
+						<input type="tel" id="tel" name="tel" class="form-control" data-ng-model="contact.tel" placeholder="Telephone Number">
+					</div>
+					<div class="form-group">
+						<select class="form-control" placeholder="Service Provider">
+							<option value="" disabled selected>Contact's Service Provider</option>
+						  <option ng-repeat="provider in serviceProvider | orderBy: 'name'" value="{{provider.domain}}" data-ng-bind="provider.name"></option>
+						</select>
+					</div>
+					<div ng-show="contact.invite" class="form-group">
+						<textarea name="message" data-ng-model="contact.message" id="message" class="form-control ng-pristine ng-valid" cols="30" rows="10" placeholder="Content"></textarea>
+					</div>
+					<div class="text-center form-group">
+						<button ng-click="contact.edit=!contact.edit" type="submit" class="btn btn-large btn-primary">Update</button>
+					</div>
+					<div data-ng-show="error" class="text-center text-danger">
+						<strong data-ng-bind="error"></strong>
+					</div>
+				</fieldset>
+			</form>
+			<hr />
+		</li>
+	</ol>
+	<br /><br />
+</section>

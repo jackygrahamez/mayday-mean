@@ -61,16 +61,16 @@ module.exports = {
 	},
 	linkedin: {
 		//clientID: process.env.LINKEDIN_ID || 'APP_ID',
-		clientID: '2da15d94-c908-45d7-bc9f-e5f0237b7b3e',
+		clientID: '78yo23ei5bt0pg',
 		//clientSecret: process.env.LINKEDIN_SECRET || 'APP_SECRET',
-		clientSecret: 'e169213d-39c6-4688-8bc4-827084a013bd',
+		clientSecret: 'TfmzfaCtmozvTl1W',
 		callbackURL: '/auth/linkedin/callback'
 	},
 	github: {
-		clientID: process.env.GITHUB_ID || 'APP_ID',
-		//clientID: '5818694066c48541221b',
-		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
-		//clientSecret: 'd1fbaca577f0315f7ed04331bbd7ffd2defaac01'
+		//clientID: process.env.GITHUB_ID || 'APP_ID',
+		clientID: '5818694066c48541221b',
+		//clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
+		clientSecret: 'd1fbaca577f0315f7ed04331bbd7ffd2defaac01'
 		callbackURL: '/auth/github/callback'
 	},
 	mailer: {

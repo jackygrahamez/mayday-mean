@@ -88,7 +88,15 @@ var UserSchema = new Schema({
 	},
 	resetPasswordExpires: {
 		type: Date
-	}
+	},
+	contacts: [{
+		firstName: String,
+		lastName: String,
+		tel: String,
+		service: String,
+		email: String,
+		telAddres: String
+	}]
 });
 
 /**
