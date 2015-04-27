@@ -1,41 +1,50 @@
-<section data-ng-controller="DashboardController">
+<section data-ng-controller="DashboardController" ng-init="addButton=true">
 	<h2>Setup Contacts</h2>
 	<p>Welcome <span class="text-capitalize">{{authentication.user.firstName}}</span>. Please enter your emergency contact list below.</p>
 	<ol>
-		<li ng-repeat="contact in contacts" ng-init="contact.edit=false">
-			<div ng-hide="contact.edit" class="contact_info">
-				<h4>Contact {{$index+1}}</h4>
-				<label ng-show="contact.firstName" name="firstName" data-ng-bind="contact.firstName"></label>
-				<label ng-show="{{contact.lastName}}" name="lastName" data-ng-bind="contact.lastName"></label>
-				<label ng-show="{{contact.email}}" name="email" data-ng-bind="contact.email"></label>
-				<label ng-show="{{contact.tel}}" name="tel" data-ng-bind="contact.tel"></label>
-				<button ng-click="contact.edit=!contact.edit" class="btn btn-large btn-primary">Edit</button>
+		<li ng-repeat="contact in contacts" ng-init="contact.edit=true">
+			<label>Contact {{$index+1}}</label>
+			<div ng-hide="contact.edit" class="row contact_info">
+				<div class="col-md-6">
+					<label ng-show="contact.firstName" name="firstName" data-ng-bind="contact.firstName"></label>
+					<label ng-show="contact.lastName" name="lastName" data-ng-bind="contact.lastName"></label>
+					<label ng-show="contact.email" name="email" data-ng-bind="contact.email"></label>
+					<label ng-show="contact.tel" name="tel" data-ng-bind="contact.tel"></label>
+					<label ng-show="contact.provider" name="provider" data-ng-bind="serviceProvider[contact.provider].name"></label>
+					<a ng-click="contact.edit=!contact.edit" class="btn">Edit</a>
+				</div>
+				<div class="col-md-6">
+					<div data-ng-show="contact.active" class="active"><strong data-ng-bind="contact.active"></strong></div>
+					<div data-ng-show="contact.success" class="success"><strong data-ng-bind="contact.success"></strong></div>
+					<div data-ng-show="contact.warning" class="warning"><strong data-ng-bind="contact.warning"></strong></div>
+					<div data-ng-show="contact.error" class="error"><strong data-ng-bind="contact.error"></strong></div>
+				</div>
 			</div>
-			<form ng-show="contact.edit" name="userForm" data-ng-submit="addContact($index)" class="signin form-horizontal" novalidate autocomplete="off">
+			<form ng-show="contact.edit" name="userForm" data-ng-submit="saveContact($index)" class="signin form-horizontal" novalidate autocomplete="off">
 				<fieldset>
 					<div class="form-group">
 						<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="contact.firstName" placeholder="First Name">
 					</div>
-					<div class="form-group">
+					<div ng-show="contact.firstName" class="form-group">
 						<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="contact.lastName" placeholder="Last Name">
 					</div>
-					<div class="form-group">
+					<div ng-show="contact.lastName" class="form-group">
 						<input type="email" id="email" name="email" class="form-control" data-ng-model="contact.email" placeholder="Email">
 					</div>
-					<div class="form-group">
+					<div ng-show="contact.email" class="form-group">
 						<input type="tel" id="tel" name="tel" class="form-control" data-ng-model="contact.tel" placeholder="Telephone Number">
 					</div>
-					<div class="form-group">
-						<select class="form-control" placeholder="Service Provider">
+					<div ng-show="contact.tel" class="form-group">
+						<select ng-change="updateMessage($index)" class="form-control" placeholder="Service Provider" data-ng-model="contact.provider">
 							<option value="" disabled selected>Contact's Service Provider</option>
-						  <option ng-repeat="provider in serviceProvider | orderBy: 'name'" value="{{provider.domain}}" data-ng-bind="provider.name"></option>
+						  <option ng-repeat="provider in serviceProvider | orderBy: 'name'" value="{{$index}}" data-ng-bind="provider.name"></option>
 						</select>
 					</div>
-					<div ng-show="contact.invite" class="form-group">
+					<div ng-show="contact.provider" class="form-group">
 						<textarea name="message" data-ng-model="contact.message" id="message" class="form-control ng-pristine ng-valid" cols="30" rows="10" placeholder="Content"></textarea>
 					</div>
-					<div class="text-center form-group">
-						<button ng-click="contact.edit=!contact.edit" type="submit" class="btn btn-large btn-primary">Update</button>
+					<div ng-show="contact.message" class="text-center form-group">
+						<button type="submit" class="btn btn-large btn-primary">Send</button>
 					</div>
 					<div data-ng-show="error" class="text-center text-danger">
 						<strong data-ng-bind="error"></strong>
@@ -45,5 +54,6 @@
 			<hr />
 		</li>
 	</ol>
+	<button ng-show="addButton" ng-click="addContact()" class="btn btn-large btn-primary">Add</button>
 	<br /><br />
 </section>

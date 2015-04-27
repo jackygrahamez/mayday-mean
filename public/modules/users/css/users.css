@@ -15,9 +15,6 @@
 input, textarea, input {
 	margin: 5px;
 }
-.contact_info label {
-	display: block;
-}
 ol li {
 	list-style: none;
 }
