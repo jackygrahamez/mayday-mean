@@ -23,6 +23,16 @@ angular.module('core').controller('DashboardController',
 			{name: "Qwest", domain: "qwestmp.com"},
 			{name: "U.S. Cellular", domain: "email.uscc.net"}
 		];
+		$scope.serviceProvider.sort(function (a, b) {
+		  if (a.name > b.name) {
+		    return 1;
+		  }
+		  if (a.name < b.name) {
+		    return -1;
+		  }
+		  // a must be equal to b
+		  return 0;
+		});
 		$scope.addContact = function($index) {
 			$scope.addButton = false;
 			$scope.contacts.push({edit:true});
@@ -32,7 +42,7 @@ angular.module('core').controller('DashboardController',
 			$scope.addButton = true;
 			$scope.contacts[$index].edit = false;
 			$scope.success = $scope.error = null;
-
+			$scope.contacts[$index].provider = $scope.serviceProvider[$scope.contacts[$index].provider];
 			$http.post('/users/addcontact', $scope.contacts[$index]).success(function(response) {
 				// If successful show success message and clear form
 				console.log('success');
