@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('core').controller('DashboardController',
-['$scope', 'Authentication', 'Menus', '$location',
-	function($scope, Authentication, Menus, $location) {
+['$scope', '$http', 'Authentication', 'Menus', '$location',
+	function($scope, $http, Authentication, Menus, $location) {
 		$scope.authentication = Authentication;
 		$scope.contacts = [];
 		$scope.serviceProvider = [
@@ -28,8 +28,20 @@ angular.module('core').controller('DashboardController',
 			$scope.contacts.push({edit:true});
 		};
 		$scope.saveContact = function($index) {
+			console.log('saveContact');
 			$scope.addButton = true;
 			$scope.contacts[$index].edit = false;
+			$scope.success = $scope.error = null;
+
+			$http.post('/users/addcontact', $scope.contacts[$index]).success(function(response) {
+				// If successful show success message and clear form
+				console.log('success');
+				$scope.success = true;
+				//$scope.passwordDetails = null;
+			}).error(function(response) {
+				console.log('error: '+response.message);
+				$scope.error = response.message;
+			});
 		};
 		$scope.sendContactRequest = function($index) {
 

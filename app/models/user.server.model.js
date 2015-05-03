@@ -94,6 +94,7 @@ var UserSchema = new Schema({
 		lastName: String,
 		tel: String,
 		service: String,
+		domain: String,
 		email: String,
 		telAddres: String
 	}]

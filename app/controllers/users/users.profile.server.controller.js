@@ -9,6 +9,23 @@ var _ = require('lodash'),
 	passport = require('passport'),
 	User = mongoose.model('User');
 
+
+/**
+* Add user's contacts
+*/
+
+exports.addcontact = function(req, res) {
+	console.dir(req.body);
+	var user = req.user;
+	if (user) {
+		res.json(user);
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
+
 /**
  * Update user details
  */
