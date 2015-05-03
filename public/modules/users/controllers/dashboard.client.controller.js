@@ -1,10 +1,12 @@
 'use strict';
 
 angular.module('core').controller('DashboardController',
-['$scope', '$http', 'Authentication', 'Menus', '$location',
-	function($scope, $http, Authentication, Menus, $location) {
+['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location',
+	function($scope, $http, Authentication, Users, Menus, $location) {
+		$scope.user = Authentication.user;
+		console.dir(user.contacts);
 		$scope.authentication = Authentication;
-		$scope.contacts = [];
+		$scope.contacts = (user.contacts) ? user.contacts : [];
 		$scope.serviceProvider = [
 			{name: "I Don't Know", domain: ""},
 			{name: "AT&T", domain: "txt.att.net"},
