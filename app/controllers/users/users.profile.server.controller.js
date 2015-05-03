@@ -15,10 +15,39 @@ var _ = require('lodash'),
 */
 
 exports.addcontact = function(req, res) {
-	console.dir(req.body);
-	var user = req.user;
+	var user = req.user,
+	contact = req.body;
 	if (user) {
-		res.json(user);
+		User.findById(req.user.id, function(err, user) {
+			if (!err && user) {
+
+				user.contacts = (user.contacts) ? user.contacts : [];
+				user.contacts.push(contact);
+				user.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						req.login(user, function(err) {
+							if (err) {
+								console.log('error: '+err);
+								res.status(400).send(err);
+							} else {
+								console.log("message: 'Contact added successfully'");
+								res.send({
+									message: 'Contact added successfully'
+								});
+							}
+						});
+					}
+				});
+			} else {
+				res.status(400).send({
+					message: 'User is not found'
+				});
+			}
+		});
 	} else {
 		res.status(400).send({
 			message: 'User is not signed in'
