@@ -59,6 +59,7 @@ angular.module('core').controller('DashboardController',
 			console.log('saveContact');
 			$scope.addButton = true;
 			$scope.contacts[$index].edit = false;
+			$scope.contacts[$index].update = true;
 			$scope.contacts[$index].warning = 'Pending Validation';
 			$scope.success = $scope.error = null;
 			$scope.contacts[$index].provider = $scope.serviceProvider[$scope.contacts[$index].provider];

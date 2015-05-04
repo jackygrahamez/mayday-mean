@@ -101,7 +101,8 @@ var UserSchema = new Schema({
 		},
 		message: String,
 		validated: Boolean,
-		warning: String
+		warning: String,
+		update: Boolean
 	}]
 });
 
