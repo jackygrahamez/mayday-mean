@@ -99,7 +99,9 @@ var UserSchema = new Schema({
 			name: String,
 			domain: String
 		},
-		message: String
+		message: String,
+		validated: Boolean,
+		warning: String
 	}]
 });
 
