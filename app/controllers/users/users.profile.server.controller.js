@@ -17,6 +17,7 @@ var _ = require('lodash'),
 exports.addcontact = function(req, res) {
 	var user = req.user,
 	contact = req.body;
+	console.dir(contact);
 	if (user) {
 		User.findById(req.user.id, function(err, user) {
 			if (!err && user) {

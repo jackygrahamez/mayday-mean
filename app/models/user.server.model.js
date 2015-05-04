@@ -93,10 +93,13 @@ var UserSchema = new Schema({
 		firstName: String,
 		lastName: String,
 		tel: String,
-		service: String,
-		domain: String,
 		email: String,
-		telAddres: String
+		telAddres: String,
+		provider: {
+			name: String,
+			domain: String
+		},
+		message: String
 	}]
 });
 

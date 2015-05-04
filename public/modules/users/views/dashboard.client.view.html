@@ -2,7 +2,7 @@
 	<h2>Setup Contacts</h2>
 	<p>Welcome <span class="text-capitalize">{{authentication.user.firstName}}</span>. Please enter your emergency contact list below.</p>
 	<ol>
-		<li ng-repeat="contact in contacts" ng-init="contact.edit=true">
+		<li ng-repeat="contact in contacts">
 			<label>Contact {{$index+1}}</label>
 			<div ng-hide="contact.edit" class="row contact_info">
 				<div class="col-md-6">
@@ -36,8 +36,8 @@
 					</div>
 					<div ng-show="contact.tel" class="form-group">
 						<select ng-change="updateMessage($index)" class="form-control" placeholder="Service Provider" data-ng-model="contact.provider">
-							<option value="" disabled selected>Contact's Service Provider</option>
-						  <option ng-repeat="provider in serviceProvider | orderBy: 'name'" value="{{$index}}" data-ng-bind="provider.name"></option>
+							<option value="" disabled ng-selected={{!contact.provider}}>Contact's Service Provider</option>
+						  <option ng-repeat="provider in serviceProvider | orderBy: 'name'" ng-selected={{contact.provider.name==provider.name}} value="{{$index}}" data-ng-bind="provider.name"></option>
 						</select>
 					</div>
 					<div ng-show="contact.provider" class="form-group">

@@ -3,10 +3,11 @@
 angular.module('core').controller('DashboardController',
 ['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location',
 	function($scope, $http, Authentication, Users, Menus, $location) {
+
+		console.dir(user);
 		$scope.user = Authentication.user;
-		console.dir(user.contacts);
 		$scope.authentication = Authentication;
-		$scope.contacts = (user.contacts) ? user.contacts : [];
+		$scope.contacts = (user.contacts.length > 0) ? user.contacts : [];
 		$scope.serviceProvider = [
 			{name: "I Don't Know", domain: ""},
 			{name: "AT&T", domain: "txt.att.net"},
@@ -38,6 +39,7 @@ angular.module('core').controller('DashboardController',
 		$scope.addContact = function($index) {
 			$scope.addButton = false;
 			$scope.contacts.push({edit:true});
+			console.dir($scope.contacts);
 		};
 		$scope.saveContact = function($index) {
 			console.log('saveContact');
@@ -55,14 +57,10 @@ angular.module('core').controller('DashboardController',
 				$scope.error = response.message;
 			});
 		};
-		$scope.sendContactRequest = function($index) {
-
-		};
 		$scope.updateMessage = function($index) {
-			var message = "Dear "+$scope.contacts[$index].firstName+",\n\nI would like to add you as an emergency contact. Please confirm your contact information.\n\nBest,\n\n"+$scope.authentication.user.firstName;
+			var message = "Dear "+$scope.contacts[$index].firstName+",\n\nI would like to add you as an emergency contact. Please confirm your contact information.\n\nBest,\n\n"+user.firstName;
 			$scope.contacts[$index].message = message;
 			$scope.contacts[$index].warning = "Pending Validation";
-
 		};
 	}
 ]);
