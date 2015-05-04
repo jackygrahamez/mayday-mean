@@ -4,7 +4,6 @@ angular.module('core').controller('DashboardController',
 ['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location',
 	function($scope, $http, Authentication, Users, Menus, $location) {
 
-		console.dir(user);
 		$scope.user = Authentication.user;
 		$scope.authentication = Authentication;
 		$scope.contacts = (user.contacts.length > 0) ? user.contacts : [];
@@ -40,6 +39,22 @@ angular.module('core').controller('DashboardController',
 			$scope.addButton = false;
 			$scope.contacts.push({edit:true});
 			console.dir($scope.contacts);
+		};
+		$scope.deleteContact = function($index) {
+			//delete user.contacts[$index];
+			user.contacts.splice($index, 1);
+			$scope.success = $scope.error = null;
+			//$scope.contacts[$index].provider = $scope.serviceProvider[$scope.contacts[$index].provider];
+			//$scope.contacts.splice($index, 1);
+			$http.post('/users/deletecontact', user).success(function(response) {
+				// If successful show success message and clear form
+				console.log('success');
+				$scope.success = true;
+				//$scope.passwordDetails = null;
+			}).error(function(response) {
+				console.log('error: '+response.message);
+				$scope.error = response.message;
+			});
 		};
 		$scope.saveContact = function($index) {
 			console.log('saveContact');

@@ -12,6 +12,7 @@
 					<label ng-show="contact.tel" name="tel" data-ng-bind="contact.tel"></label>
 					<label ng-show="contact.provider" name="provider" data-ng-bind="serviceProvider[contact.provider].name"></label>
 					<a ng-click="contact.edit=!contact.edit" class="btn">Edit</a>
+					<a ng-click="deleteContact($index)" class="btn">Delete</a>
 				</div>
 				<div class="col-md-6">
 					<div data-ng-show="contact.active" class="active"><strong data-ng-bind="contact.active"></strong></div>

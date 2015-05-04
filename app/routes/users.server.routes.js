@@ -17,6 +17,9 @@ module.exports = function(app) {
 	// Add Contact
 	app.route('/users/addcontact').post(users.addcontact);
 
+	// Delete Contact
+	app.route('/users/deletecontact').post(users.deletecontact);	
+
 	// Setting up the users password api
 	app.route('/users/password').post(users.changePassword);
 	app.route('/auth/forgot').post(users.forgot);

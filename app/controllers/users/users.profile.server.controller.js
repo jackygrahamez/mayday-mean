@@ -57,6 +57,53 @@ exports.addcontact = function(req, res) {
 };
 
 /**
+* Delete user's contacts
+*/
+
+exports.deletecontact = function(req, res) {
+	var user = req.user,
+	index = req.body;
+	console.dir(index);
+	if (user) {
+		User.findById(req.user.id, function(err, user) {
+			if (!err && user) {
+				//user.contacts = (contacts) ? contacts : [];
+
+				user.contacts.splice(index, 1);
+				console.dir(user);
+				user.save(function(err) {
+					if (err) {
+						return res.status(400).send({
+							message: errorHandler.getErrorMessage(err)
+						});
+					} else {
+						req.login(user, function(err) {
+							if (err) {
+								console.log('error: '+err);
+								res.status(400).send(err);
+							} else {
+								console.log("message: 'Deleted contact successfully'");
+								res.send({
+									message: 'Deleted contact successfully'
+								});
+							}
+						});
+					}
+				});
+			} else {
+				res.status(400).send({
+					message: 'User is not found'
+				});
+			}
+		});
+	} else {
+		res.status(400).send({
+			message: 'User is not signed in'
+		});
+	}
+};
+
+/**
  * Update user details
  */
 exports.update = function(req, res) {
