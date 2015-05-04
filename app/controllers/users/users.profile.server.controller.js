@@ -9,7 +9,14 @@ var _ = require('lodash'),
 	passport = require('passport'),
 	User = mongoose.model('User');
 
-
+function checkUnique(obj, list) {
+	for (var i = 0; i < list.length; i++) {
+		if (list[i].email == obj.email) {
+			return false;
+		}
+	}
+	return true;
+}
 
 
 /**
@@ -24,8 +31,7 @@ exports.addcontact = function(req, res) {
 		User.findById(req.user.id, function(err, user) {
 			if (!err && user) {
 				user.contacts = (user.contacts) ? user.contacts : [];
-				console.log(user.contacts.indexOf(contact));
-				if (user.contacts.indexOf(contact) < 0) {
+				if (checkUnique(contact, user.contacts)) {
 						user.contacts.push(contact);
 						user.save(function(err) {
 							if (err) {
@@ -45,10 +51,6 @@ exports.addcontact = function(req, res) {
 									}
 								});
 							}
-						});
-					} else {
-						res.status(400).send({
-							message: 'User is not found'
 						});
 					}
 				}

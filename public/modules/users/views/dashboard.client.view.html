@@ -5,20 +5,24 @@
 		<li ng-repeat="contact in contacts">
 			<label>Contact {{$index+1}}</label>
 			<div ng-hide="contact.edit" class="row contact_info">
-				<div class="col-md-6">
-					<label ng-show="contact.firstName" name="firstName" data-ng-bind="contact.firstName"></label>
-					<label ng-show="contact.lastName" name="lastName" data-ng-bind="contact.lastName"></label>
-					<label ng-show="contact.email" name="email" data-ng-bind="contact.email"></label>
-					<label ng-show="contact.tel" name="tel" data-ng-bind="contact.tel"></label>
-					<label ng-show="contact.provider" name="provider" data-ng-bind="serviceProvider[contact.provider].name"></label>
-					<a ng-click="contact.edit=!contact.edit" class="btn">Edit</a>
-					<a ng-click="deleteContact($index)" class="btn text-danger">Delete</a>
+				<div class="col-xs-6">
+						<label ng-show="contact.firstName" name="firstName" data-ng-bind="contact.firstName"></label>
+						<label ng-show="contact.lastName" name="lastName" data-ng-bind="contact.lastName"></label><br />
+						<label ng-show="contact.email" name="email" data-ng-bind="contact.email"></label><br />
+						<label ng-show="contact.tel" name="tel" data-ng-bind="contact.tel"></label><br />
+						<label ng-show="contact.provider" name="provider" data-ng-bind="contact.provider.name"></label><br />
 				</div>
-				<div class="col-md-6">
+				<div class="col-xs-6">
 					<div data-ng-show="contact.active" class="active"><strong data-ng-bind="contact.active"></strong></div>
 					<div data-ng-show="contact.success" class="success"><strong data-ng-bind="contact.success"></strong></div>
 					<div data-ng-show="contact.warning" class="warning"><strong data-ng-bind="contact.warning"></strong></div>
 					<div data-ng-show="contact.error" class="error"><strong data-ng-bind="contact.error"></strong></div>
+				</div>
+			</div>
+			<div class="row">
+				<div lass="col-xs-12">
+					<a ng-click="contact.edit=!contact.edit" class="btn">Edit</a>
+					<a ng-click="deleteContact($index)" class="btn text-danger">Delete</a>
 				</div>
 			</div>
 			<form ng-show="contact.edit" name="userForm" data-ng-submit="saveContact($index)" class="signin form-horizontal" novalidate autocomplete="off">
@@ -42,7 +46,7 @@
 						</select>
 					</div>
 					<div ng-show="contact.provider" class="form-group">
-						<textarea name="message" data-ng-model="contact.message" id="message" class="form-control ng-pristine ng-valid" cols="30" rows="10" placeholder="Content"></textarea>
+						<textarea ng-hide="contact.update" name="message" data-ng-model="contact.message" id="message" class="form-control ng-pristine ng-valid" cols="30" rows="10" placeholder="Content"></textarea>
 					</div>
 					<div ng-show="contact.message" class="text-center form-group">
 						<button ng-hide="contact.update" type="submit" class="btn btn-large btn-primary">Send</button>

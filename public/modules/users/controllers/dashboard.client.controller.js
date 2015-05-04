@@ -47,7 +47,6 @@ angular.module('core').controller('DashboardController',
 			//$scope.contacts.splice($index, 1);
 			$http.post('/users/deletecontact', user).success(function(response) {
 				// If successful show success message and clear form
-				console.log('success');
 				$scope.success = true;
 				//$scope.passwordDetails = null;
 			}).error(function(response) {
@@ -56,8 +55,6 @@ angular.module('core').controller('DashboardController',
 			});
 		};
 		$scope.saveContact = function($index) {
-			console.log('saveContact');
-			$scope.addButton = true;
 			$scope.contacts[$index].edit = false;
 			$scope.contacts[$index].update = true;
 			$scope.contacts[$index].warning = 'Pending Validation';
