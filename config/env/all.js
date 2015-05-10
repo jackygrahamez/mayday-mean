@@ -54,8 +54,7 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/ng-parallax/angular-parallax.js',
-				'public/lib/angular-scroll/angular-scroll.js',
-				'public/lib/angular-re-captcha/angular-re-captcha.js'
+				'public/lib/angular-scroll/angular-scroll.js'
 			]
 		},
 		css: [

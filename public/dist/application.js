@@ -33,7 +33,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 	function($locationProvider) {
 		$locationProvider.hashPrefix('!');
 	}
-]).run(["$rootScope", "$location", "parallaxHelper", function($rootScope, $location, parallaxHelper) {
+]).run(function($rootScope, $location, parallaxHelper) {
 	$rootScope.background = parallaxHelper.createAnimator(-0.3);
 	$rootScope.transitionBackground = function(elementPosition) {
 
@@ -54,7 +54,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
 			backgroundPosition: positions
 		};
 	};
-}]);
+});
 //$scope.background = parallaxHelper.createAnimator(-0.3);
 
 //Then define the init function for starting up the application
@@ -626,9 +626,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 'use strict';
 
 angular.module('core').controller('DashboardController',
-['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location', 'reCAPTCHA',
-	function($scope, $http, Authentication, Users, Menus, $location, reCAPTCHA) {
-		reCAPTCHA.setPublicKey('6LfsoAYTAAAAALXOlBeMDzOjDDO0dLeURcsSEzQq');
+['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location',
+	function($scope, $http, Authentication, Users, Menus, $location, ) {
+		//reCAPTCHA.setPublicKey('6LfsoAYTAAAAALXOlBeMDzOjDDO0dLeURcsSEzQq');
 		$scope.user = Authentication.user;
 		$scope.authentication = Authentication;
 		$scope.contacts = (user.contacts.length > 0) ? user.contacts : [];
