@@ -66,7 +66,8 @@ exports.addcontact = function(req, res) {
 	if (user) {
 		User.findById(req.user.id, function(err, user) {
 			if (!err && user) {
-				if (user.updated.getTime()+30 < now.getTime()) {
+				//if (user.updated.getTime()+30 < now.getTime()) {
+				if (true) {
 					user.contacts = (user.contacts) ? user.contacts : [];
 					if (checkUnique(contact, user.contacts)) {
 							user.contacts.push(contact);
@@ -116,7 +117,8 @@ exports.deletecontact = function(req, res) {
 	if (user) {
 		User.findById(req.user.id, function(err, user) {
 			if (!err && user) {
-				if (user.updated.getTime()+30 < now.getTime()) {
+				//if (user.updated.getTime()+30 < now.getTime()) {
+				if (true) {
 					user.contacts.splice(index, 1);
 					user.updated = new Date();
 					user.save(function(err) {
@@ -169,7 +171,8 @@ exports.update = function(req, res) {
 	delete req.body.roles;
 
 	if (user) {
-		if (user.updated.getTime()+30 < now.getTime()) {
+		//if (user.updated.getTime()+30 < now.getTime()) {
+		if (true) {
 			// Merge existing user
 			user = _.extend(user, req.body);
 			user.updated = Date.now();
