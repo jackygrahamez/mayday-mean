@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('core').controller('DashboardController',
-['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location', 'reCAPTCHA',
-	function($scope, $http, Authentication, Users, Menus, $location, reCAPTCHA ) {
-		reCAPTCHA.setPublicKey('6LfsoAYTAAAAALXOlBeMDzOjDDO0dLeURcsSEzQq');
+['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location',
+	function($scope, $http, Authentication, Users, Menus, $location ) {
+		//reCAPTCHA.setPublicKey('6LfsoAYTAAAAALXOlBeMDzOjDDO0dLeURcsSEzQq');
 		$scope.user = Authentication.user;
 		$scope.authentication = Authentication;
 		$scope.contacts = (user.contacts.length > 0) ? user.contacts : [];
