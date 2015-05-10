@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mean';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'duParallax', 'duScroll'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'duParallax', 'duScroll', 'reCAPTCHA'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -626,9 +626,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
 'use strict';
 
 angular.module('core').controller('DashboardController',
-['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location',
-	function($scope, $http, Authentication, Users, Menus, $location) {
-
+['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location', 'reCAPTCHA',
+	function($scope, $http, Authentication, Users, Menus, $location, reCAPTCHA) {
+		reCAPTCHA.setPublicKey('6LfsoAYTAAAAALXOlBeMDzOjDDO0dLeURcsSEzQq');
 		$scope.user = Authentication.user;
 		$scope.authentication = Authentication;
 		$scope.contacts = (user.contacts.length > 0) ? user.contacts : [];
