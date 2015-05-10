@@ -48,9 +48,13 @@
 					<div ng-show="contact.provider" class="form-group">
 						<textarea ng-hide="contact.update" name="message" data-ng-model="contact.message" id="message" class="form-control ng-pristine ng-valid" cols="30" rows="10" placeholder="Content"></textarea>
 					</div>
+					<div class="row">
+					    <div ng-show="contact.message" re-captcha ng-model="user.captcha" class="col-md-offset-3"></div>
+					</div>
+					<br />
 					<div ng-show="contact.message" class="text-center form-group">
-						<button ng-hide="contact.update" type="submit" class="btn btn-large btn-primary">Send</button>
-						<button ng-show="contact.update" type="submit" class="btn btn-large btn-primary">Update</button>
+						<button ng-disabled="registerForm.$invalid" ng-hide="contact.update" type="submit" class="btn btn-large btn-primary">Send</button>
+						<button ng-disabled="registerForm.$invalid" ng-show="contact.update" type="submit" class="btn btn-large btn-primary">Update</button>
 					</div>
 					<div data-ng-show="error" class="text-center text-danger">
 						<strong data-ng-bind="error"></strong>

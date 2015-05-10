@@ -39,6 +39,7 @@
     "mongoose": "~3.8.8",
     "morgan": "~1.4.1",
     "nodemailer": "~1.3.0",
+    "nodemailer-smtp-transport": "^1.0.2",
     "passport": "~0.2.0",
     "passport-facebook": "~1.0.2",
     "passport-github": "~0.1.5",
@@ -46,8 +47,10 @@
     "passport-linkedin": "~0.1.3",
     "passport-local": "~1.0.0",
     "passport-twitter": "~1.0.2",
+    "recaptcha": "^1.2.1",
     "swig": "~1.4.1",
-    "tel-carrier": "^1.3.10"
+    "tel-carrier": "^1.3.10",
+    "xoauth2": "^1.0.0"
   },
   "devDependencies": {
     "supertest": "~0.14.0",
