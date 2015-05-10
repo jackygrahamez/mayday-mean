@@ -2,7 +2,7 @@
 
 angular.module('core').controller('DashboardController',
 ['$scope', '$http', 'Users', 'Authentication', 'Menus', '$location',
-	function($scope, $http, Authentication, Users, Menus, $location, ) {
+	function($scope, $http, Authentication, Users, Menus, $location ) {
 		//reCAPTCHA.setPublicKey('6LfsoAYTAAAAALXOlBeMDzOjDDO0dLeURcsSEzQq');
 		$scope.user = Authentication.user;
 		$scope.authentication = Authentication;
