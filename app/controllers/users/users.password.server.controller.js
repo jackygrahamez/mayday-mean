@@ -12,8 +12,31 @@ var _ = require('lodash'),
 	nodemailer = require('nodemailer'),
 	async = require('async'),
 	crypto = require('crypto');
-	
-var smtpTransport = nodemailer.createTransport(config.mailer.options);
+
+//var smtpTransport = nodemailer.createTransport(config.mailer.options);
+var nodemailer = require('nodemailer');
+var generator = require('xoauth2').createXOAuth2Generator({
+		user: 'john.g.shultz',
+		clientId: '475852206826-1atqqohgpbrt9svvsf70uqeu9q14hdch.apps.googleusercontent.com',
+		clientSecret: 'yJ1PddSyVe5wkkVkJUDN7ahi',
+		refreshToken: '1/JgL-KNyr7j4jfRYrheZIl3fzR3hfbkBeikKCT0EDm_YMEudVrK5jSpoR30zcRFq6',
+		accessToken: 'ya29.bwHszssrbVhEj3pGWa6BYiS8zGk0rdKU8_jN5bt4PoxPFTaQTgW7-F4Ml-8jrcud_mqHmNBwJdbSSA' // optional
+});
+
+// listen for token updates
+// you probably want to store these to a db
+generator.on('token', function(token){
+		console.log('New token for %s: %s', token.user, token.accessToken);
+});
+
+// login
+var smtpTransport = nodemailer.createTransport(({
+		service: 'gmail',
+		auth: {
+				xoauth2: generator
+		}
+}));
+
 
 /**
  * Forgot for reset password (forgot POST)
@@ -142,7 +165,7 @@ exports.reset = function(req, res, next) {
 									if (err) {
 										res.status(400).send(err);
 									} else {
-										// Return authenticated user 
+										// Return authenticated user
 										res.json(user);
 
 										done(err, user);
