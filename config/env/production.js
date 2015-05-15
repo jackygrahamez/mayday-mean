@@ -73,7 +73,8 @@ module.exports = {
 		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
 		//clientSecret: 'd1fbaca577f0315f7ed04331bbd7ffd2defaac01'
 		callbackURL: '/auth/github/callback'
-	},
+	}
+	/*
 	mailer: {
 		from: process.env.MAILER_FROM || 'MAILER_FROM',
 		options: {
@@ -83,7 +84,6 @@ module.exports = {
 		    }
 		}
 	}
-	/*
 	mailer: {
 		from: process.env.MAILER_FROM || 'MAILER_FROM',
 		options: {
