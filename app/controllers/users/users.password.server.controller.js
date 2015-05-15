@@ -92,7 +92,7 @@ exports.forgot = function(req, res, next) {
 		function(emailHTML, user, done) {
 			var mailOptions = {
 				to: user.email,
-				from: config.mailer.from,
+				from: 'invite@textsosalert.com',
 				subject: 'Password Reset',
 				html: emailHTML
 			};
