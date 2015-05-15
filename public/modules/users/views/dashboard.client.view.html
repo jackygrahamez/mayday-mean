@@ -55,8 +55,7 @@
 					    <div ng-show="contact.message" re-captcha ng-model="user.captcha" class="col-md-offset-3"></div>
 					</div>
 					<br />
-					<div
-							ng-show="contact.message"
+					<div ng-show="contact.message"
 							vc-recaptcha
 							theme="'light'"
 							key="model.key"
@@ -78,14 +77,4 @@
 	</ol>
 	<button ng-show="addButton" ng-click="addContact()" class="btn btn-large btn-primary">Add</button>
 	<br /><br />
-	<form ng-submit="submit()">
-            <div
-                vc-recaptcha
-                theme="'light'"
-                key="model.key"
-                on-create="setWidgetId(widgetId)"
-                on-success="setResponse(response)"
-            ></div>
-            <button class="btn" type="submit">Submit</button>
-  </form>
 </section>
