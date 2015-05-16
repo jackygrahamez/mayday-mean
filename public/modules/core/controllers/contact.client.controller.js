@@ -11,11 +11,9 @@ angular.module('core').controller('ContactController', ['$scope', 'vcRecaptchaSe
 			key: '6LfsoAYTAAAAALXOlBeMDzOjDDO0dLeURcsSEzQq'
 		};
 		$scope.setResponse = function (response) {
-				console.info('Response available');
 				$scope.response = response;
 		};
 		$scope.setWidgetId = function (widgetId) {
-				console.info('Created widget ID: %s', widgetId);
 				$scope.widgetId = widgetId;
 		};
 		$scope.submit = function () {
@@ -27,7 +25,7 @@ angular.module('core').controller('ContactController', ['$scope', 'vcRecaptchaSe
 				* Send the reCaptcha response to the server and use some of the server side APIs to validate it
 				* See https://developers.google.com/recaptcha/docs/verify
 				*/
-				console.log('sending the captcha response to the server', $scope.response);
+				//console.log('sending the captcha response to the server', $scope.response);
 				if (true) { //valid
 						console.log('Success');
 						console.dir($scope.contactform.inputName.$modelValue);
