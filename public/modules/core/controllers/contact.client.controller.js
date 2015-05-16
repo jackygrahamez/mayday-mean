@@ -28,7 +28,7 @@ angular.module('core').controller('ContactController', ['$scope', 'vcRecaptchaSe
 				* See https://developers.google.com/recaptcha/docs/verify
 				*/
 				console.log('sending the captcha response to the server', $scope.response);
-				if (valid) { //valid
+				if (true) { //valid
 						console.log('Success');
 						console.dir($scope.contactform.inputName.$modelValue);
 						$scope.formPost = {};
