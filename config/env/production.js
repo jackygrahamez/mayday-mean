@@ -25,6 +25,8 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
 			],
 			js: [
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/slick-carousel/slick/slick.min.js',
 				'public/lib/angular/angular.min.js',
 				'public/lib/angular-resource/angular-resource.min.js',
 				'public/lib/angular-animate/angular-animate.min.js',
@@ -33,7 +35,8 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
 				'public/lib/ng-parallax/angular-parallax.js',
 				'public/lib/angular-scroll/angular-scroll.js',
-				'public/lib/angular-recaptcha/release/angular-recaptcha.js'
+				'public/lib/angular-recaptcha/release/angular-recaptcha.js',
+				'public/lib/angular-slick/dist/slick.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',

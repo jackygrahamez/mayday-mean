@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mean';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'duParallax', 'duScroll', 'vcRecaptcha'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ui.router', 'ui.bootstrap', 'ui.utils', 'duParallax', 'duScroll', 'vcRecaptcha', 'slick'];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -316,6 +316,20 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 						transform: 'scale(1)'
 				};
 		};
+
+		$scope.myInterval = 5000;
+		  var slides = $scope.slides = [
+				/*{ image:'/modules/core/img/carousel/c1.jpg', text: 'Moto 360' },
+				{ image:'/modules/core/img/carousel/c2.jpg' },
+				{ image:'/modules/core/img/carousel/c3.jpg' },*/
+				{ image:'/modules/core/img/carousel/c6.jpg' },
+				{ image:'/modules/core/img/carousel/c5.jpg' },
+				{ image:'/modules/core/img/carousel/c4.jpg' },
+				{ image:'/modules/core/img/carousel/c3.jpg' },
+				{ image:'/modules/core/img/carousel/c2.jpg' },
+				{ image:'/modules/core/img/carousel/c1.jpg' }
+
+			];
 	}
 ]);
 
