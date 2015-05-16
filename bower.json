@@ -14,9 +14,6 @@
     "ng-parallax": "~0.1.8",
     "angular-scroll": "~0.6.4",
     "angular-re-captcha": "~0.2.0",
-    "angular-recaptcha": "~2.2.3",
-    "angular-slick": "~0.2.1",
-    "jquery": "~2.1.4",
-    "angular-jquery": "~0.2.1"
+    "angular-recaptcha": "~2.2.3"
   }
 }
