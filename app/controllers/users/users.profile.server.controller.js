@@ -25,11 +25,13 @@ function checkUnique(obj, list) {
 function sendMessage(user, contact) {
 	var nodemailer = require('nodemailer');
 	var generator = require('xoauth2').createXOAuth2Generator({
-	    user: 'john.g.shultz',
-	    clientId: '475852206826-1atqqohgpbrt9svvsf70uqeu9q14hdch.apps.googleusercontent.com',
-	    clientSecret: 'yJ1PddSyVe5wkkVkJUDN7ahi',
-	    refreshToken: '1/JgL-KNyr7j4jfRYrheZIl3fzR3hfbkBeikKCT0EDm_YMEudVrK5jSpoR30zcRFq6',
-	    accessToken: 'ya29.bwHszssrbVhEj3pGWa6BYiS8zGk0rdKU8_jN5bt4PoxPFTaQTgW7-F4Ml-8jrcud_mqHmNBwJdbSSA' // optional
+		user: 'support@textsosalert.com',
+		//user: 'john.g.shultz',
+		clientId: '366095965779-cs5vtbfvgsa8hj23q8cgckcekg5037q2.apps.googleusercontent.com',
+		//clientSecret: 'yJ1PddSyVe5wkkVkJUDN7ahi',
+		clientSecret: 'pNj3uEX-vNuZzg9Oko4aYSsr',
+		refreshToken: '1/pkNNEBDfzm9XQCdDyxYnfC-7Bgwtwtm0rFCKdKKIY9990RDknAdJa_sgfheVM0XT',
+		accessToken: 'ya29.dQHkZx-3c3AZmzF6SnpmfycuGxgHQNDANV-9hhHDSihQ0CfwrVzWyijEKllo3oOCwDbpjWroLpYW2g' // optional
 	});
 
 	// listen for token updates
