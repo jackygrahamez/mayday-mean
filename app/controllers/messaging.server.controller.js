@@ -61,6 +61,7 @@ exports.create = function(req, res) {
               idfv = req.body.idfv;
               message = req.body.message + ' ';
               recipient = req.body.contacts[i];
+              recipient = recipient.replace(/\D/g,'');
               if (recipient.substring(0, 1) != "1") {
                 recipient = "1"+recipient;
               }
