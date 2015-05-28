@@ -90,6 +90,9 @@ var UserSchema = new Schema({
 	resetPasswordExpires: {
 		type: Date
 	},
+	balance: {
+		type: Number
+	},
 	contacts: [{
 		firstName: String,
 		lastName: String,

@@ -38,19 +38,6 @@ exports.create = function(req, res) {
          }
       };
     console.log(req.body.idfv);
-    Message.count({ idfv: req.body.idfv }, function(err, count) {
-      if (err) {
-        status = { sent : 'false', error : err };
-        res.json(status);
-        console.log(status);
-      } else {
-        console.log('Count is ' + count);
-        if (count > 10) {
-          status = { sent : 'false', error : 'too many text messages sent' };
-          res.json(status);
-          console.log(status);
-        } else {
-
             //res.json(messaging);
             nexmo.initialize('c3c7616d','e9534e8b','http',true);
 
@@ -115,11 +102,6 @@ exports.create = function(req, res) {
               recipient = '';
             }
 
-
-        }
-      }
-
-    });
   } else {
     req.body.err = 'incomplete message request';
     var messaging = new Message(req.body);
