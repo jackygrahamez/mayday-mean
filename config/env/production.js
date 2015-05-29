@@ -55,9 +55,9 @@ module.exports = {
 	},
 	google: {
 		//clientID: process.env.GOOGLE_ID || 'APP_ID',
-		clientID: '475852206826-1atqqohgpbrt9svvsf70uqeu9q14hdch.apps.googleusercontent.com',
+		clientID: '839581474357-1p5c1igf6re33k8n1lbc7jjhavmvli7t.apps.googleusercontent.com',
 		//clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
-		clientSecret: 'yJ1PddSyVe5wkkVkJUDN7ahi',
+		clientSecret: 'T6NG_LtEP3bS1SCSj9HXp-Ge',
 		callbackURL: '/auth/google/callback'
 	},
 	linkedin: {
