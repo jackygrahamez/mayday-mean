@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
   console.log('messaging create');
-  console.dir(req.body);
+  console.log(req.body);
   var messaging = new Message(req.body),
     sender = '12134657644',
     message = '',
@@ -36,7 +36,7 @@ exports.create = function(req, res) {
       console.log(status);
     } else {
       console.log('Count is ' + count);
-      console.dir(req.body.receiptStr);
+      console.log(req.body.receiptStr);
       if (count > 100 && !req.body.receiptStr) {
         status = { sent : 'false', error : 'too many text messages sent' };
         res.json(status);
