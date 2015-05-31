@@ -20,6 +20,10 @@ var MessagingSchema = new Schema({
 		type: String,
 		trim: true,
 	},
+	receiptStr: {
+		type: String,
+		trim: true,
+	},
 	contacts: {
 		type: [String],
 		trim: true
