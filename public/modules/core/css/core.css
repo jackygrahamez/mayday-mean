@@ -6455,7 +6455,6 @@ button.close {
 	padding-left: 0;
 	list-style: none;
 	text-align: center;
-	background-color: #000;
 }
 
 .carousel-indicators li {
@@ -6471,7 +6470,7 @@ button.close {
 }
 
 .carousel-indicators .active {
-	margin: 0;
+	margin: 4px;
 	width: 12px;
 	height: 12px;
 	background-color: #fff;
