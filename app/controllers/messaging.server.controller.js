@@ -28,6 +28,9 @@ exports.create = function(req, res) {
             console.dir(messageResponse);
        }
     };
+  Message.findOne({}, {}, { sort: { 'requestTime' : -1 } }, function(err, post) {
+    console.log( post );
+  });
   console.log(req.body.idfv);
   Message.count({ idfv: req.body.idfv }, function(err, count) {
     if (err) {
