@@ -32,58 +32,69 @@ exports.create = function(req, res) {
   Message.findOne({idfv: req.body.idfv}, {}, {requestTime:1}, function(err, post) {
     console.log('requestTime');
     console.log( post.requestTime );
-  });
-  console.log(req.body.idfv);
-  Message.count({ idfv: req.body.idfv }, function(err, count) {
-    if (err) {
-      status = { sent : 'false', error : err };
+    var lastReq = new Date(post.requestTime),
+        currentReq = new Date(),
+        reqDelta = 0;
+    reqDelta = currentReq.valueOf() - lastReq.valueOf();
+    if (reqDelta > 60000) {
+      console.log('reqDelta > 60000')
+      Message.count({ idfv: req.body.idfv }, function(err, count) {
+        if (err) {
+          status = { sent : 'false', error : err };
+          res.json(status);
+          console.log(status);
+        } else {
+          console.log('Count is ' + count);
+          console.log(req.body.receiptStr);
+          if (count > 100 && !req.body.receiptStr) {
+            status = { sent : 'false', error : 'too many text messages sent' };
+            res.json(status);
+            console.log(status);
+          } else {
+            messaging.save(function(err) {
+              if (err) {
+                status = { sent : 'false', error : err };
+                res.json(status);
+                console.log(status);
+                /*
+                return res.status(400).send({
+                  message: errorHandler.getErrorMessage(err)
+                });*/
+              } else {
+                //res.json(messaging);
+                nexmo.initialize('c3c7616d','e9534e8b','http',true);
+                status = { sent : 'true'};
+                res.json(status);
+                console.log(status);
+                for (var i = 0; i < req.body.contacts.length; i++) {
+                  message = req.body.message + ' ';
+                  recipient = req.body.contacts[i];
+                  if (recipient.substring(0, 1) != "1") {
+                    recipient = "1"+recipient;
+                  }
+                  console.log(message);
+                  console.log(recipient);
+                  if (message.length > 0 && recipient.length > 0) {
+                    //helper.sendMessage(message, tel);
+                    nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+                  }
+                  message = '';
+                  recipient = '';
+                }
+                //helper.sendMessage(message, tel);
+              }
+            });
+          }
+        }
+
+      });
+    } else {
+      status = { sent : 'false', error : 'Throughput Rate Exceeded' };
       res.json(status);
       console.log(status);
-    } else {
-      console.log('Count is ' + count);
-      console.log(req.body.receiptStr);
-      if (count > 100 && !req.body.receiptStr) {
-        status = { sent : 'false', error : 'too many text messages sent' };
-        res.json(status);
-        console.log(status);
-      } else {
-        messaging.save(function(err) {
-          if (err) {
-            status = { sent : 'false', error : err };
-            res.json(status);
-            console.log(status);
-            /*
-            return res.status(400).send({
-              message: errorHandler.getErrorMessage(err)
-            });*/
-          } else {
-            //res.json(messaging);
-            nexmo.initialize('c3c7616d','e9534e8b','http',true);
-            status = { sent : 'true'};
-            res.json(status);
-            console.log(status);
-            for (var i = 0; i < req.body.contacts.length; i++) {
-              message = req.body.message + ' ';
-              recipient = req.body.contacts[i];
-              if (recipient.substring(0, 1) != "1") {
-                recipient = "1"+recipient;
-              }
-              console.log(message);
-              console.log(recipient);
-              if (message.length > 0 && recipient.length > 0) {
-                //helper.sendMessage(message, tel);
-                nexmo.sendTextMessage(sender,recipient,message,opts,callback);
-              }
-              message = '';
-              recipient = '';
-            }
-            //helper.sendMessage(message, tel);
-          }
-        });
-      }
     }
-
   });
+
 
 };
 
