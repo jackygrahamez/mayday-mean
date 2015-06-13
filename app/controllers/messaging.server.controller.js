@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
     nexmo = require('./lib/nexmo'),
     Message = mongoose.model('Message'),
+    Idfv = mongoose.model('Idfv'),
     _ = require('lodash');
 
 /**
@@ -28,10 +29,6 @@ exports.create = function(req, res) {
             console.dir(messageResponse);
        }
     };
-  Message.findOne({}, {}, {}, function(err, post) {
-    console.log('requestTime');
-    console.log( post );
-  });
   console.log(req.body.idfv);
   Message.count({ idfv: req.body.idfv }, function(err, count) {
     if (err) {
@@ -72,6 +69,7 @@ exports.create = function(req, res) {
               if (message.length > 0 && recipient.length > 0) {
                 //helper.sendMessage(message, tel);
                 nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+                Idfv.save({ idfv: req.body.idfv, requestTime: Date.now });
               }
               message = '';
               recipient = '';
