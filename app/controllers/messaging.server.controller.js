@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     errorHandler = require('./errors.server.controller'),
     nexmo = require('./lib/nexmo'),
     Message = mongoose.model('Message'),
+    Idfv = mongoose.model('Idfv'),
     _ = require('lodash');
 
 /**
@@ -29,17 +30,26 @@ exports.create = function(req, res) {
        }
     };
   //db.messages.find({idfv:'448F209F-55D1-4C99-9992-C4FEFA62C33B'}).sort({"requestTime":1}).limit(1).pretty()
-  Message.findOne({idfv: req.body.idfv}, {}, {requestTime:1}, function(err, post) {
+  Idfv.findOne({idfv: req.body.idfv}, function(err, data) {
+    var deltaReqOK = false;
     console.log('requestTime');
-    console.dir(post);
-    var lastReq = new Date(post.requestTime),
-        currentReq = new Date(),
-        reqDelta = 0;
-    reqDelta = currentReq.valueOf() - lastReq.valueOf();
-    console.log('currentReq.valueOf() '+currentReq.valueOf());
-    console.log('lastReq.valueOf() '+lastReq.valueOf());
-    console.log('reqDelta '+reqDelta);
-    if (reqDelta > 60000) {
+    console.dir(data);
+    console.dir(data.length);
+    if (data.length > 0) {
+      var lastReq = new Date(data.requestTime),
+          currentReq = new Date(),
+          reqDelta = 0;
+      reqDelta = currentReq.valueOf() - lastReq.valueOf();
+      console.log('currentReq.valueOf() '+currentReq.valueOf());
+      console.log('lastReq.valueOf() '+lastReq.valueOf());
+      console.log('reqDelta '+reqDelta);
+      if (reqDelta > 60000) {
+        deltaReqOK = true;
+      }
+    } else {
+      deltaReqOK = true;
+    }
+    if (deltaReqOK) {
       console.log('reqDelta > 60000')
       Message.count({ idfv: req.body.idfv }, function(err, count) {
         if (err) {
@@ -80,6 +90,7 @@ exports.create = function(req, res) {
                   if (message.length > 0 && recipient.length > 0) {
                     //helper.sendMessage(message, tel);
                     nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+                    Idfv.save({idfv: req.body.idfv, requestTime: currentReq});
                   }
                   message = '';
                   recipient = '';
