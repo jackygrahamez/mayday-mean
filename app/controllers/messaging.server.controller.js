@@ -34,10 +34,10 @@ exports.create = function(req, res) {
     if (err) {
       status = { sent : 'false', error : err };
       res.json(status);
-      console.log(status);
+      //console.log(status);
     } else {
-      console.log('Count is ' + count);
-      console.log(req.body.receiptStr);
+      //console.log('Count is ' + count);
+      console.log('req.body.receiptStr '+req.body.receiptStr);
       if (count > 100 && !req.body.receiptStr) {
         status = { sent : 'false', error : 'too many text messages sent' };
         res.json(status);
@@ -57,18 +57,18 @@ exports.create = function(req, res) {
             nexmo.initialize('c3c7616d','e9534e8b','http',true);
             status = { sent : 'true'};
             res.json(status);
-            console.log(status);
+            //console.log(status);
             for (var i = 0; i < req.body.contacts.length; i++) {
               message = req.body.message + ' ';
               recipient = req.body.contacts[i];
               if (recipient.substring(0, 1) != "1") {
                 recipient = "1"+recipient;
               }
-              console.log(message);
-              console.log(recipient);
+              //console.log(message);
+              //console.log(recipient);
               if (message.length > 0 && recipient.length > 0) {
                 //helper.sendMessage(message, tel);
-                nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+                //nexmo.sendTextMessage(sender,recipient,message,opts,callback);
                 Idfv.save({})
               }
               message = '';

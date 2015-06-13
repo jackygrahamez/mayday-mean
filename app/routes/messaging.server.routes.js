@@ -7,6 +7,7 @@ module.exports = function(app) {
 	// ...
 	//app.route('/messaging')
 	app.post('/messaging', function(req, res){
+		console.dir(req);
 		var status = '';
 		if (typeof(req.body.debug) !== 'undefined') {
 			if (req.body.debug) {
