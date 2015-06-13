@@ -73,13 +73,17 @@ exports.create = function(req, res) {
                 //helper.sendMessage(message, tel);
                 console.log('sender '+sender+'\nrecipient '+recipient+'\nmessage '+message+'\nopts ' + opts + '\ncallback '+callback);
                 console.log('setTimeout');
-                setTimeout(function(sender,recipient,message,opts,callback) {
-                  console.log('timeout over triggering message');
-                  console.log('sender '+sender+'\nrecipient '+recipient+'\nmessage '+message+'\nopts ' + opts + '\ncallback '+callback);
-
-                  nexmo.sendTextMessage(sender,recipient,message,opts,callback);
-                }, 10000);
-
+                if (typeof(sender) != 'undefined' &&
+                    typeof(recipient) != 'undefined' &&
+                    typeof(message) != 'undefined' &&
+                    typeof(opts) != 'undefined' &&
+                    typeof(callback) != 'undefined') {
+                      setTimeout(function(sender,recipient,message,opts,callback) {
+                        console.log('timeout over triggering message');
+                        console.log('sender '+sender+'\nrecipient '+recipient+'\nmessage '+message+'\nopts ' + opts + '\ncallback '+callback);
+                        nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+                      }, 10000);
+                    }
               }
               message = '';
               recipient = '';

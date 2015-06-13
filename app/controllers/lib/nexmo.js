@@ -454,6 +454,7 @@ function sendError(callback, err, returnData) {
     if (callback) {
         callback(err, returnData);
     } else {
+        console.dir(err);
         throw err;
     }
 }
