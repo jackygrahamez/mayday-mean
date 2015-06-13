@@ -75,6 +75,7 @@ exports.create = function(req, res) {
                   nexmo.sendTextMessage(sender,recipient,message,opts,callback);
                 }, 10000);
 
+              }
               message = '';
               recipient = '';
             }
