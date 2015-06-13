@@ -71,9 +71,12 @@ exports.create = function(req, res) {
               console.log(recipient);
               if (message.length > 0 && recipient.length > 0) {
                 //helper.sendMessage(message, tel);
+                console.log('sender '+sender+'\nrecipient '+recipient+'\nmessage '+message+'\nopts ' + opts + '\ncallback '+callback);
                 console.log('setTimeout');
                 setTimeout(function(sender,recipient,message,opts,callback) {
                   console.log('timeout over triggering message');
+                  console.log('sender '+sender+'\nrecipient '+recipient+'\nmessage '+message+'\nopts ' + opts + '\ncallback '+callback);
+
                   nexmo.sendTextMessage(sender,recipient,message,opts,callback);
                 }, 10000);
 
