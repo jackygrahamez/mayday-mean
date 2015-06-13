@@ -69,7 +69,9 @@ exports.create = function(req, res) {
               if (message.length > 0 && recipient.length > 0) {
                 //helper.sendMessage(message, tel);
                 nexmo.sendTextMessage(sender,recipient,message,opts,callback);
-                Idfv.save({ idfv: req.body.idfv, requestTime: Date.now });
+                var saveIDFV = { idfv: req.body.idfv }
+                console.log(saveIDFV);
+                Idfv.save(saveIDFV);
               }
               message = '';
               recipient = '';
