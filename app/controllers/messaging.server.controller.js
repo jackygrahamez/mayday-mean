@@ -29,7 +29,7 @@ exports.create = function(req, res) {
        }
     };
   //db.messages.find({idfv:'448F209F-55D1-4C99-9992-C4FEFA62C33B'}).sort({"requestTime":1}).limit(1).pretty()
-  Message.findOne({idfv: req.body.idfv}, {}, {{requestTime:1}}, function(err, post) {
+  Message.findOne({idfv: req.body.idfv}, {}, {requestTime:1}, function(err, post) {
     console.log('requestTime');
     console.log( post );
   });
