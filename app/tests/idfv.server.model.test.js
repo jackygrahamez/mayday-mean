@@ -27,7 +27,7 @@ describe('Idfv Model Unit Tests:', function() {
 			password: 'password'
 		});
 
-		user.save(function() { 
+		user.save(function() {
 			idfv = new Idfv({
 				// Add model fields
 				// ...
@@ -46,7 +46,7 @@ describe('Idfv Model Unit Tests:', function() {
 		});
 	});
 
-	afterEach(function(done) { 
+	afterEach(function(done) {
 		Idfv.remove().exec();
 		User.remove().exec();
 
