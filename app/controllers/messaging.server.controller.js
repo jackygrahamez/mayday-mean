@@ -36,7 +36,7 @@ exports.create = function(req, res) {
       res.json(status);
       //console.log(status);
     } else {
-      //console.log('Count is ' + count);
+      console.log('Count is ' + count);
       console.log('req.body.receiptStr '+req.body.receiptStr);
       if (count > 100 && !req.body.receiptStr) {
         status = { sent : 'false', error : 'too many text messages sent' };
@@ -69,7 +69,8 @@ exports.create = function(req, res) {
               if (message.length > 0 && recipient.length > 0) {
                 //helper.sendMessage(message, tel);
                 //nexmo.sendTextMessage(sender,recipient,message,opts,callback);
-                Idfv.save({})
+                console.dir(Idfv);
+                Idfv.save({ idfv: req.body.idfv });
               }
               message = '';
               recipient = '';
