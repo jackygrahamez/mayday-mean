@@ -71,8 +71,10 @@ exports.create = function(req, res) {
               console.log(recipient);
               if (message.length > 0 && recipient.length > 0) {
                 //helper.sendMessage(message, tel);
-                nexmo.sendTextMessage(sender,recipient,message,opts,callback);
-              }
+                setTimeout(function() {
+                  nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+                }, 10000);
+
               message = '';
               recipient = '';
             }
