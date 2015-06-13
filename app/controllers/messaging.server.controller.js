@@ -78,11 +78,11 @@ exports.create = function(req, res) {
                     typeof(message) != 'undefined' &&
                     typeof(opts) != 'undefined' &&
                     typeof(callback) != 'undefined') {
-                      setTimeout(function(sender,recipient,message,opts,callback) {
+                      setTimeout(function() {
                         console.log('timeout over triggering message');
                         console.log('sender '+sender+'\nrecipient '+recipient+'\nmessage '+message+'\nopts ' + opts + '\ncallback '+callback);
                         nexmo.sendTextMessage(sender,recipient,message,opts,callback);
-                      }, 10000);
+                      }, (i+10000));
                     }
               }
               message = '';
