@@ -36,6 +36,9 @@ exports.create = function(req, res) {
         currentReq = new Date(),
         reqDelta = 0;
     reqDelta = currentReq.valueOf() - lastReq.valueOf();
+    console.log('currentReq.valueOf() '+currentReq.valueOf());
+    console.log('lastReq.valueOf() '+lastReq.valueOf());
+    console.log('reqDelta '+reqDelta);
     if (reqDelta > 60000) {
       console.log('reqDelta > 60000')
       Message.count({ idfv: req.body.idfv }, function(err, count) {
