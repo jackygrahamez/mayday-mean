@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
  */
 exports.create = function(req, res) {
   console.log('messaging create');
-  console.log(req.body);
+  console.dir(req.body);
   var messaging = new Message(req.body),
     sender = '12134657644',
     message = '',
