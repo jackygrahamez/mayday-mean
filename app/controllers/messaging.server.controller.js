@@ -9,6 +9,7 @@ var mongoose = require('mongoose'),
     Message = mongoose.model('Message'),
     _ = require('lodash');
 
+
 /**
  * Create a Messaging
  */
@@ -61,24 +62,27 @@ exports.create = function(req, res) {
             status = { sent : 'true'};
             res.json(status);
             console.log(status);
+            console.log('req.body.contacts '+req.body.contacts.length);
+
             for (var i = 0; i < req.body.contacts.length; i++) {
-              message = req.body.message + ' ';
-              recipient = req.body.contacts[i];
+              var message = req.body.message + ' ',
+              recipient = req.body.contacts[i],
+              t = (i+1) * 1000;
               if (recipient.substring(0, 1) != "1") {
                 recipient = "1"+recipient;
               }
-              console.log(message);
-              console.log(recipient);
               if (message.length > 0 && recipient.length > 0) {
-                //helper.sendMessage(message, tel);
-                console.log('sender '+sender+'\nrecipient '+recipient+'\nmessage '+message+'\nopts ' + opts + '\ncallback '+callback);
-                console.log('setTimeout');
                 if (typeof(sender) != 'undefined' &&
                     typeof(recipient) != 'undefined' &&
                     typeof(message) != 'undefined' &&
                     typeof(opts) != 'undefined' &&
                     typeof(callback) != 'undefined') {
-                      nexmo.sendTextMessage(sender,recipient,message,opts,callback);
+                      var sendMessage = function(sender,recipient,message,opts) {
+                        console.log('recipient '+recipient);
+                        nexmo.sendTextMessage(sender,recipient,message,opts);
+                      }
+                      setTimeout(sendMessage, t, [sender], [recipient], [message], [opts]);
+
                     }
               }
               message = '';
