@@ -73,6 +73,9 @@ module.exports = {
 		clientSecret: process.env.GITHUB_SECRET || 'APP_SECRET',
 		//clientSecret: 'd1fbaca577f0315f7ed04331bbd7ffd2defaac01'
 		callbackURL: '/auth/github/callback'
+	},
+	zeropush: {
+		serverToken: 'dev_xrBaTKFAZmykRAf7CzaD'
 	}
 	/*
 	mailer: {

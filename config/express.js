@@ -22,7 +22,9 @@ var fs = require('fs'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+	scheduler = require('../app/controllers/scheduler.server.controller');
+
 
 module.exports = function(db) {
 	// Initialize express app
@@ -159,6 +161,8 @@ module.exports = function(db) {
 		// Return HTTPS server instance
 		return httpsServer;
 	}
+
+	scheduler.init();
 
 	// Return Express server instance
 	return app;
